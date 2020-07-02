@@ -1,9 +1,6 @@
 package com.njuse.jvmfinal.util;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class IOUtil {
     public static byte[] readFileByBytes(InputStream is) throws IOException {
@@ -21,5 +18,11 @@ public class IOUtil {
             e.printStackTrace();
             throw e;
         }
+    }
+    public static String transform(String pathName) {
+        if (pathName.contains("/")) {
+            return pathName.replace("/", File.separator);
+        }
+        return pathName;
     }
 }

@@ -2,9 +2,12 @@ package com.njuse.jvmfinal.memory.jclass;
 
 import com.njuse.jvmfinal.classloader.classfileparser.MethodInfo;
 import com.njuse.jvmfinal.classloader.classfileparser.attribute.CodeAttribute;
+import com.njuse.jvmfinal.execution.Decoder;
+import com.njuse.jvmfinal.instructions.base.Instruction;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 
@@ -68,5 +71,19 @@ public class Method extends ClassMember {
         }
         return cnt;
     }
+    public void parseCode() {
+        ByteBuffer codeReader = ByteBuffer.wrap(this.code);
+        int position = 0;
+        codeReader.position(position);
+        int size = this.code.length;
 
+        for(this.instList = new ArrayList(); position <= size - 1; position = codeReader.position()) {
+            int opcode = codeReader.get() & 255;
+            Instruction instruction = Decoder.decode(opcode);
+            instruction.fetchOperands(codeReader);
+            this.instList.add(position + " " + instruction.toString());
+        }
+
+        this.parsed = true;
+    }
 }
