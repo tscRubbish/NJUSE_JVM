@@ -55,9 +55,10 @@ public class ClassLoader {
             clazz.setInitState(InitState.PREPARED);
             //link class
             linkClass(clazz);
+
             return clazz;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(className);
             throw new ClassNotFoundException();
         }
     }
@@ -70,7 +71,9 @@ public class ClassLoader {
      */
     private JClass defineClass(byte[] data, EntryType definingEntry) throws ClassNotFoundException {
         ClassFile classFile = new ClassFile(data);
+        //System.out.println(classFile.getClassName()+" "+classFile.getSuperClassName());
         JClass clazz = new JClass(classFile);
+        //System.out.println(clazz.getName()+" "+clazz.getSuperClassName());
         //todo
         /**
          * Add some codes here.
@@ -99,8 +102,8 @@ public class ClassLoader {
          * Use the load entry(defining entry) as initiating entry of super class
          */
         if (clazz.getSuperClassName()=="") return;
-        clazz.setSuperClass(ClassLoader.getInstance().loadClass(clazz.getSuperClassName(),definingEntry));
         //System.out.println(clazz.getName()+"'s  father="+clazz.getSuperClassName());
+        clazz.setSuperClass(ClassLoader.getInstance().loadClass(clazz.getSuperClassName(),definingEntry));
     }
 
     /**
@@ -117,7 +120,7 @@ public class ClassLoader {
         int cnt=0;
         for (String name:clazz.getInterfaceNames()){
             JClass jc=ClassLoader.getInstance().loadClass(name,clazz.getLoadEntryType());
-            //System.out.println(clazz.getName()+"'sinterface="+jc.getName());
+           // System.out.println(clazz.getName()+"'sinterface="+jc.getName());
         }
     }
 

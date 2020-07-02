@@ -14,6 +14,7 @@ public class MethodArea {
 
     private MethodArea() {
         classMap = new LinkedHashMap<>();
+        classState=new LinkedHashMap<>();
     }
 
     @Setter @Getter
@@ -44,6 +45,6 @@ public class MethodArea {
 
     public void addClass(String className, JClass clazz) {
         classMap.put(className, clazz);
-        classState.put(className, true);
+        classState.put(className, Boolean.TRUE);
     }
 }

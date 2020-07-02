@@ -13,9 +13,10 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 import java.io.File;
 
 public class Starter {
+    static String cp = String.join("/", "src", "test", "java");
 
     public static void main(String[] args) {
-
+        runTest("cases.light.LightEasyTestUtilTest", cp);
     }
 
     /**
@@ -23,19 +24,16 @@ public class Starter {
      */
     public static void runTest(String mainClassName, String cp) throws RuntimeException {
         ClassLoader classLoader = ClassLoader.getInstance();
-        ClassFileReader.setBootClasspath(cp);
         ClassFileReader.setUserClasspath(cp);
-        ClassFileReader.setExtClasspath(cp);
         try {
-            JClass clazz = classLoader.loadClass(mainClassName.replace(".", "/"), (EntryType) null);
+            JClass clazz = classLoader.loadClass(mainClassName.replace('.','/'), (EntryType) null);
+            //System.out.println(mainClassName.replace('.','/'));
             Method mainMethod = clazz.getMainMethod();
             JThread jThread = new JThread();
             StackFrame stackFrame = new StackFrame(jThread, mainMethod, mainMethod.getMaxStack(), mainMethod.getMaxLocal());
             jThread.pushFrame(stackFrame);
             Interpreter.interpret(jThread);
         } catch (ClassNotFoundException cfe) {
-            throw new RuntimeException();
-        } catch (RuntimeException re) {
             throw new RuntimeException();
         }
     }

@@ -20,7 +20,7 @@ public class LightEasyTest {
 
     ByteArrayOutputStream outBytes = null;
     String lineSeparator = System.lineSeparator();
-    String cp = String.join(File.separator, "src", "test", "java");
+    String cp = String.join("/", "src", "test", "java");
 
     @org.junit.Before
     public void setUp() {

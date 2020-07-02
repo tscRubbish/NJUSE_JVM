@@ -5,6 +5,7 @@ import com.njuse.jvmfinal.util.PathUtil;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -25,12 +26,9 @@ public class ClassFileReader {
     private static Entry extClasspath = null;//extension class entry
     private static Entry userClasspath = null;//user class entry
 
-    public static void setBootClasspath(String classpath) {
-        bootClasspath = chooseEntryType(classpath);
-    }
-
-    public static void setExtClasspath(String classpath) {
-        extClasspath = chooseEntryType(classpath);
+    public static void setBootAndExtClasspath(String classpath) {
+        bootClasspath = chooseEntryType(String.join(FILE_SEPARATOR, classpath, "lib", "*"));
+        extClasspath = chooseEntryType(String.join(FILE_SEPARATOR, classpath, "lib", "ext", "*"));
     }
 
     public static void setUserClasspath(String classpath) {
@@ -61,6 +59,7 @@ public class ClassFileReader {
      */
     public Pair<byte[], Integer> readClassFile(String className, EntryType privilege) throws IOException, ClassNotFoundException {
         String realClassName = className + ".class";
+        this.checkAndSetDefault();
         realClassName = PathUtil.transform(realClassName);
         //todo
         /**
@@ -99,5 +98,31 @@ public class ClassFileReader {
             }
         }catch (Exception e){}
         throw new ClassNotFoundException();
+    }
+    private void checkAndSetDefault() throws FileNotFoundException {
+        if (bootClasspath == null) {
+        }
+
+        if (extClasspath == null) {
+            File f = new File(String.join(FILE_SEPARATOR, ".", "jre"));
+            if (f.exists()) {
+                setBootAndExtClasspath(String.join(FILE_SEPARATOR, ".", "jre"));
+            } else {
+                String JAVA_HOME = System.getenv("JAVA_HOME");
+                if (JAVA_HOME != null) {
+                    f = new File(JAVA_HOME);
+                    if (!f.exists()) {
+                        throw new FileNotFoundException("Cannot find JRE folder!");
+                    }
+
+                    setBootAndExtClasspath(String.join(FILE_SEPARATOR, JAVA_HOME, "jre"));
+                }
+            }
+        }
+
+        if (userClasspath == null) {
+            setUserClasspath(".");
+        }
+
     }
 }

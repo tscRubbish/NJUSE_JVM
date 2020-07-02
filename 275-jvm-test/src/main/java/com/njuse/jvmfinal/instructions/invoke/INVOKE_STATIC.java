@@ -38,30 +38,30 @@ public class INVOKE_STATIC extends Index16Instruction {
             if (toInvoke.getName().contains("equalInt")) {
                 int v1 = frame.getOperandStack().popInt();
                 int v2 = frame.getOperandStack().popInt();
-                System.out.println("v1: "+v1+" v2: "+v2);
+                //System.out.println("v1: "+v1+" v2: "+v2);
                 if (v1 != v2) {
                     throw new RuntimeException(v2+"!="+v1);
                 }
 
                 frame.getOperandStack().pushInt(v2);
                 frame.getOperandStack().pushInt(v1);
-                frame.getOperandStack().pushInt(1);
+                //frame.getOperandStack().pushInt(1);
             } else if (toInvoke.getName().contains("equalFloat")) {
                 float v1 = frame.getOperandStack().popFloat();
                 float v2 = frame.getOperandStack().popFloat();
-                System.out.println("v1: "+v1+" v2: "+v2);
+                //System.out.println("v1: "+v1+" v2: "+v2);
                 if ((double)(v1 - v2) > 1.0E-4D || (double)(v1 - v2) < -1.0E-4D) {
                     throw new RuntimeException(v2+"!="+v1);
                 }
 
                 frame.getOperandStack().pushFloat(v2);
                 frame.getOperandStack().pushFloat(v1);
-                frame.getOperandStack().pushInt(1);
+                //frame.getOperandStack().pushInt(1);
             } else if (toInvoke.getName().equals("fail")) {
                 throw new RuntimeException();
             }else if (toInvoke.getName().equals("reach")){
                 int v=frame.getOperandStack().popInt();
-                System.out.println(v);
+                System.out.print(v);
                 frame.getOperandStack().pushInt(v);
             }
         }
