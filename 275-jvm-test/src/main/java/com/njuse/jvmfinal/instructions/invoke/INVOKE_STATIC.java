@@ -34,6 +34,40 @@ public class INVOKE_STATIC extends Index16Instruction {
         Method toInvoke = ((MethodRef) methodRef).resolveMethodRef();
         JClass toClazz=toInvoke.getClazz();
 
+        if (toClazz.getInitState()== InitState.PREPARED){
+            frame.setNextPC(frame.getNextPC()-3);
+            toClazz.initClass(frame.getThread(),toClazz);
+            return;
+        }
+        checkTestUtil(methodRef,toInvoke,frame,currentClz);
+        Slot[] args = copyArguments(frame, toInvoke);
+
+        StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
+                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
+        Vars localVars = newFrame.getLocalVars();
+
+        int argc = toInvoke.getArgc();
+        for (int i = 1; i < args.length + 1; i++) {
+            localVars.setSlot(i, args[argc - i]);
+        }
+
+        frame.getThread().pushFrame(newFrame);
+        checkNative(toInvoke,frame);
+    }
+    private void checkNative(Method toInvoke,StackFrame frame){
+        if (toInvoke.isNative()) {
+            if (toInvoke.getName().equals("registerNatives")) {
+                frame.getThread().popFrame();
+            } else {
+                System.out.println("Native method:"
+                        + toInvoke.getClazz().getName()
+                        + toInvoke.name
+                        + toInvoke.descriptor);
+                frame.getThread().popFrame();
+            }
+        }
+    }
+    private void checkTestUtil(Constant methodRef,Method toInvoke,StackFrame frame,JClass currentClz) {
         if (((MethodRef)methodRef).getClassName().contains("TestUtil")) {
             if (toInvoke.getName().contains("equalInt")) {
                 int v1 = frame.getOperandStack().popInt();
@@ -61,40 +95,14 @@ public class INVOKE_STATIC extends Index16Instruction {
                 throw new RuntimeException();
             }else if (toInvoke.getName().equals("reach")){
                 int v=frame.getOperandStack().popInt();
+                //System.out.println(currentClz.getName());
+                //System.out.println(toInvoke.getName());
+                //System.out.println(frame.getMethod().getName());
                 System.out.print(v);
                 frame.getOperandStack().pushInt(v);
             }
         }
-        if (toClazz.getInitState()== InitState.PREPARED){
-            frame.setNextPC(frame.getNextPC()-3);
-            toClazz.initClass(frame.getThread(),toClazz);
-            return;
-        }
-        Slot[] args = copyArguments(frame, toInvoke);
-
-        StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
-                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
-        Vars localVars = newFrame.getLocalVars();
-
-        int argc = toInvoke.getArgc();
-        for (int i = 1; i < args.length + 1; i++) {
-            localVars.setSlot(i, args[argc - i]);
-        }
-
-        frame.getThread().pushFrame(newFrame);
-        if (toInvoke.isNative()) {
-            if (toInvoke.getName().equals("registerNatives")) {
-                frame.getThread().popFrame();
-            } else {
-                System.out.println("Native method:"
-                        + toInvoke.getClazz().getName()
-                        + toInvoke.name
-                        + toInvoke.descriptor);
-                frame.getThread().popFrame();
-            }
-        }
     }
-
     private Slot[] copyArguments(StackFrame frame, Method method) {
         int argc = method.getArgc();
         Slot[] argv = new Slot[argc];

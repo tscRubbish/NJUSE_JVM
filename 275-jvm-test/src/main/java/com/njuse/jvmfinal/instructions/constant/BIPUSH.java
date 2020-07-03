@@ -8,9 +8,6 @@ import java.nio.ByteBuffer;
 public class BIPUSH extends Instruction {
     private byte val;
 
-    public BIPUSH() {
-    }
-
     public void fetchOperands(ByteBuffer reader) {
         this.val = reader.get();
     }

@@ -8,7 +8,10 @@ import lombok.Setter;
 public class Slot {
     private JObject object;
     private Integer value;
-
+    public Slot(){
+        value=0;
+        object=null;
+    }
     public Slot clone() {
         Slot toClone = new Slot();
         toClone.object = this.object;

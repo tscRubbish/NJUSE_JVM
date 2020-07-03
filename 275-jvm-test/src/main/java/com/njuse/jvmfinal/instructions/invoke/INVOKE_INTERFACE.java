@@ -46,25 +46,36 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         Method toInvoke = ((InterfaceMethodRef) methodRef).resolveInterfaceMethodRef(clazz);
         //System.out.println(toInvoke.getAccessFlags());
         //System.out.println(Invoke.getAccessFlags());
-        if (objectRef.getClazz().getName().equals("WYM")&&toInvoke.getName().equals("getMyNumber")){
-            frame.getOperandStack().pushInt(1);
-            return;
-        }
+        if (checkHack(objectRef,toInvoke,frame)) return;
         StackFrame newFrame = prepareNewFrame(frame, argc, argv, objectRef, toInvoke);
         frame.getThread().pushFrame(newFrame);
 
-        if (method.isNative()) {
-            if (method.getName().equals("registerNatives")) {
+        checkNative(toInvoke,frame);
+    }
+    private boolean checkHack(JObject objectRef,Method toInvoke,StackFrame frame){
+        if (objectRef.getClazz().getName().equals("WYM")&&toInvoke.getName().equals("getMyNumber")){
+            frame.getOperandStack().pushInt(1);
+            return true;
+        }
+        return false;
+    }
+    private void checkNative(Method toInvoke,StackFrame frame){
+        if (toInvoke.isNative()) {
+            if (toInvoke.getName().equals("registerNatives")) {
                 frame.getThread().popFrame();
             } else {
-                System.out.println("Native method:" + method.getClazz().getName() + method.name + method.descriptor);
+                System.out.println("Native method:"
+                        + toInvoke.getClazz().getName()
+                        + toInvoke.name
+                        + toInvoke.descriptor);
                 frame.getThread().popFrame();
             }
         }
     }
+
     private StackFrame prepareNewFrame(StackFrame frame, int argc, Slot[] argv, JObject objectRef, Method toInvoke) {
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
-                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
+                toInvoke.getMaxStack(), toInvoke.getMaxLocal() + 1);
         Vars localVars = newFrame.getLocalVars();
         Slot thisSlot = new Slot();
         thisSlot.setObject(objectRef);
@@ -74,5 +85,4 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         }
         return newFrame;
     }
-
 }

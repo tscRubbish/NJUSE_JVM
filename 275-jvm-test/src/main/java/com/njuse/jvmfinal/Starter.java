@@ -16,7 +16,8 @@ public class Starter {
     static String cp = String.join("/", "src", "test", "java");
 
     public static void main(String[] args) {
-        Starter.runTest("cases.light.LightEasyStaticTest", cp);
+        //Starter.runTest("cases.light.LightEasyStaticTest", cp);
+        Starter.runTest("cases.light.LightEasyBranchTest", cp);
     }
 
     /**
@@ -29,10 +30,16 @@ public class Starter {
             JClass clazz = classLoader.loadClass(mainClassName.replace('.','/'), (EntryType) null);
             //System.out.println(mainClassName.replace('.','/'));
             Method mainMethod = clazz.getMainMethod();
-            //clazz.get
             JThread jThread = new JThread();
             StackFrame stackFrame = new StackFrame(jThread, mainMethod, mainMethod.getMaxStack(), mainMethod.getMaxLocal()+1);
             jThread.pushFrame(stackFrame);
+            /*for (Method m:clazz.getMethods()){
+                //System.out.println(m.getName());
+                if (m.getName().equals("<clinit>")){
+                    stackFrame = new StackFrame(jThread, m, m.getMaxStack(), m.getMaxLocal()+1);
+                    jThread.pushFrame(stackFrame);
+                }
+            }*/
             Interpreter.interpret(jThread);
         } catch (ClassNotFoundException cfe) {
             throw new RuntimeException();

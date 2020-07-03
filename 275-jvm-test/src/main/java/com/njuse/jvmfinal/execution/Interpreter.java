@@ -37,11 +37,13 @@ public class Interpreter {
                 method.parseCode();
             }
             //set the reader's position to nextPC
+            //System.out.println("next pc="+oriTop.getNextPC());
             codeReader.position(oriTop.getNextPC());
             //fetch and decode
             int opcode = codeReader.get() & 0xff;
             Instruction instruction = Decoder.decode(opcode);
             instruction.fetchOperands(codeReader);
+            //System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
             //set nextPC to reader's position
             int nextPC = codeReader.position();
             oriTop.setNextPC(nextPC);
