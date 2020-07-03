@@ -64,7 +64,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
     }
     private StackFrame prepareNewFrame(StackFrame frame, int argc, Slot[] argv, JObject objectRef, Method toInvoke) {
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
-                toInvoke.getMaxStack(), toInvoke.getMaxLocal());
+                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
         Vars localVars = newFrame.getLocalVars();
         Slot thisSlot = new Slot();
         thisSlot.setObject(objectRef);

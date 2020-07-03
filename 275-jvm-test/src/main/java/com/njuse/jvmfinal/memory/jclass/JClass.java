@@ -155,7 +155,7 @@ public class JClass {
         //初始化<clinit>
         Method Method_clinit=getMethodInClass("<clinit>","()V",true);
         if (Method_clinit!=null) {
-            StackFrame stf = new StackFrame(thread, Method_clinit, Method_clinit.getMaxStack(), Method_clinit.getMaxLocal());
+            StackFrame stf = new StackFrame(thread, Method_clinit, Method_clinit.getMaxStack(), Method_clinit.getMaxLocal()+1);
             thread.pushFrame(stf);
         }
         //初始化父类

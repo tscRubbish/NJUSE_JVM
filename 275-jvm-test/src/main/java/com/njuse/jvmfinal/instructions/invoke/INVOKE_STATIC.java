@@ -73,7 +73,7 @@ public class INVOKE_STATIC extends Index16Instruction {
         Slot[] args = copyArguments(frame, toInvoke);
 
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
-                toInvoke.getMaxStack(), toInvoke.getMaxLocal());
+                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
         Vars localVars = newFrame.getLocalVars();
 
         int argc = toInvoke.getArgc();

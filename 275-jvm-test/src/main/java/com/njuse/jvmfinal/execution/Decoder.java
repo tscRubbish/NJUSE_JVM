@@ -3,6 +3,7 @@ package com.njuse.jvmfinal.execution;
 import com.njuse.jvmfinal.instructions.base.Instruction;
 import com.njuse.jvmfinal.instructions.base.OpCode;
 import com.njuse.jvmfinal.instructions.constant.*;
+import com.njuse.jvmfinal.instructions.control.ARETURN;
 import com.njuse.jvmfinal.instructions.control.GOTO;
 import com.njuse.jvmfinal.instructions.control.IRETURN;
 import com.njuse.jvmfinal.instructions.control.RETURN;
@@ -43,8 +44,8 @@ public class Decoder {
         opMap.put(OpCode.BIPUSH, new BIPUSH());
         opMap.put(OpCode.SIPUSH, new SIPUSH());
         opMap.put(OpCode.LDC, new LDC());
-//        opMap.put(OpCode.LDC_W, new LDC_W());
-//        opMap.put(OpCode.LDC2_W, new LDC2_W());
+        opMap.put(OpCode.LDC_W, new LDC_W());
+        opMap.put(OpCode.LDC2_W, new LDC2_W());
         opMap.put(OpCode.ILOAD, new ILOAD());
 
         opMap.put(OpCode.POP, new POP());
@@ -86,7 +87,7 @@ public class Decoder {
 //        opMap.put(OpCode.LRETURN, new LRETURN());
 //        opMap.put(OpCode.FRETURN, new FRETURN());
 //        opMap.put(OpCode.DRETURN, new DRETURN());
-//        opMap.put(OpCode.ARETURN, new ARETURN());
+        opMap.put(OpCode.ARETURN, new ARETURN());
         opMap.put(RETURN_, new RETURN());
         opMap.put(OpCode.GETSTATIC, new GETSTATIC());
         opMap.put(OpCode.PUTSTATIC, new PUTSTATIC());
@@ -104,6 +105,7 @@ public class Decoder {
 
     public static Instruction decode(int opcode) {
         Instruction instruction = opMap.get(opcode);
+        //System.out.println(instruction.toString());
         if (instruction == null) {
             throw new UnsupportedOperationException("Unsupported instruction " + String.format("0x%08X", opcode));
         }
