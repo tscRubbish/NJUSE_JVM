@@ -155,6 +155,8 @@ public class JClass {
         initStart(clazz);
         //初始化<clinit>
         Method Method_clinit=clazz.getMethodInClass("<clinit>","()V",true);
+        //注意：这里不能直接调用getMethodInClass方法，不然父类返回的的<clinit>是子类的
+        //会出现多个重复相同的<clinit>
         if (Method_clinit!=null) {
             StackFrame stf = new StackFrame(thread, Method_clinit, Method_clinit.getMaxStack(), Method_clinit.getMaxLocal()+1);
             //System.out.println(clazz.getName());

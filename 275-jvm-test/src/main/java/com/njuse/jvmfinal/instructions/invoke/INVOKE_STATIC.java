@@ -43,12 +43,12 @@ public class INVOKE_STATIC extends Index16Instruction {
         Slot[] args = copyArguments(frame, toInvoke);
 
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
-                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
+                toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);//注意本地变量表大小+1
         Vars localVars = newFrame.getLocalVars();
         //System.out.println(toInvoke.getMaxLocal()+1+"  "+args.length);
         int argc = toInvoke.getArgc();
         for (int i = 0; i < args.length; i++) {
-            localVars.setSlot(i, args[argc - i-1]);
+            localVars.setSlot(i, args[argc - i-1]);//注意：这里的坐标从0开始，而其他的invoke操作因为要在0位置加入对象引用所以从1开始
         }
 
         frame.getThread().pushFrame(newFrame);
