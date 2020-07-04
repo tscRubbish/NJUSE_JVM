@@ -79,6 +79,7 @@ public class Decoder {
         opMap.put(OpCode.I2S,new I2S());
         opMap.put(OpCode.I2D,new I2D());
         opMap.put(OpCode.I2F,new I2F());
+        opMap.put(OpCode.I2L,new I2L());
         opMap.put(OpCode.D2F,new D2F());
         opMap.put(OpCode.D2I,new D2I());
         opMap.put(OpCode.D2L,new D2L());
