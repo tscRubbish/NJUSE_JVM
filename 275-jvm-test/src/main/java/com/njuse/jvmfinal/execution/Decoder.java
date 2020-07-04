@@ -20,8 +20,6 @@ import com.njuse.jvmfinal.instructions.store.ASTORE;
 import com.njuse.jvmfinal.instructions.store.ASTORE_N;
 import com.njuse.jvmfinal.instructions.store.ISTORE_N;
 import com.njuse.jvmfinal.instructions.control.LRETURN;
-import jdk.internal.org.objectweb.asm.Opcodes;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 
 import java.util.HashMap;
 
