@@ -52,10 +52,11 @@ public class Interpreter {
             //check whether there's a new frame
             //and whether there's more frame to exec
             StackFrame newTop = thread.getTopFrame();
+
             if (newTop == null) {
                 return null;
             }
-
+            //System.out.println("newFrame="+newTop.getMethod().getName()+" ordFrame="+oriTop.getMethod().getName());
             if (oriTop != newTop) {
                 initCodeReader(thread);
             }

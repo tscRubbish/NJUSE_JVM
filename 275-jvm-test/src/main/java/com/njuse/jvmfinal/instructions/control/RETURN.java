@@ -9,5 +9,7 @@ public class RETURN extends NoOperandsInstruction {
     public void execute(StackFrame frame) {
         JThread thread = frame.getThread();
         thread.popFrame();
+        //if (thread.getTopFrame()!=null)
+        //System.out.println("    "+thread.getTopFrame().getMethod().getName());
     }
 }

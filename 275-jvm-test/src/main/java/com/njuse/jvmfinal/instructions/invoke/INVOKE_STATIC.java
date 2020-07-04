@@ -33,7 +33,7 @@ public class INVOKE_STATIC extends Index16Instruction {
         Constant methodRef = currentClz.getRuntimeConstantPool().getConstant(super.index);
         Method toInvoke = ((MethodRef) methodRef).resolveMethodRef();
         JClass toClazz=toInvoke.getClazz();
-
+        //System.out.println(frame.getMethod().getName()+"  "+toInvoke.getName());
         if (toClazz.getInitState()== InitState.PREPARED){
             frame.setNextPC(frame.getNextPC()-3);
             toClazz.initClass(frame.getThread(),toClazz);

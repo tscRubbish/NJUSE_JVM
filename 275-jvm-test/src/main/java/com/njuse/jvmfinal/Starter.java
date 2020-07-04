@@ -17,7 +17,7 @@ public class Starter {
 
     public static void main(String[] args) {
         //Starter.runTest("cases.light.LightEasyStaticTest", cp);
-        Starter.runTest("cases.light.LightEasyBranchTest", cp);
+        Starter.runTest("cases.light.LightEasyStaticTest", cp);
     }
 
     /**
@@ -33,6 +33,7 @@ public class Starter {
             JThread jThread = new JThread();
             StackFrame stackFrame = new StackFrame(jThread, mainMethod, mainMethod.getMaxStack(), mainMethod.getMaxLocal()+1);
             jThread.pushFrame(stackFrame);
+            clazz.initClass(jThread,clazz);
             /*for (Method m:clazz.getMethods()){
                 //System.out.println(m.getName());
                 if (m.getName().equals("<clinit>")){
@@ -40,6 +41,7 @@ public class Starter {
                     jThread.pushFrame(stackFrame);
                 }
             }*/
+
             Interpreter.interpret(jThread);
         } catch (ClassNotFoundException cfe) {
             throw new RuntimeException();

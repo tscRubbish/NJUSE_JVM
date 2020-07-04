@@ -151,11 +151,13 @@ public class JClass {
      * 这个方法初始化了这个类的静态部分
      */
     public void initClass(JThread thread, JClass clazz) {
+        if (clazz.initState==InitState.SUCCESS) return;
         initStart(clazz);
         //初始化<clinit>
-        Method Method_clinit=getMethodInClass("<clinit>","()V",true);
+        Method Method_clinit=clazz.getMethodInClass("<clinit>","()V",true);
         if (Method_clinit!=null) {
             StackFrame stf = new StackFrame(thread, Method_clinit, Method_clinit.getMaxStack(), Method_clinit.getMaxLocal()+1);
+            //System.out.println(clazz.getName());
             thread.pushFrame(stf);
         }
         //初始化父类
