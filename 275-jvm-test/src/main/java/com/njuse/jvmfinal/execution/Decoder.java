@@ -5,6 +5,7 @@ import com.njuse.jvmfinal.instructions.base.OpCode;
 import com.njuse.jvmfinal.instructions.comparison.*;
 import com.njuse.jvmfinal.instructions.constant.*;
 import com.njuse.jvmfinal.instructions.control.*;
+import com.njuse.jvmfinal.instructions.conversion.*;
 import com.njuse.jvmfinal.instructions.invoke.INVOKE_INTERFACE;
 import com.njuse.jvmfinal.instructions.invoke.INVOKE_SPECIAL;
 import com.njuse.jvmfinal.instructions.invoke.INVOKE_STATIC;
@@ -12,13 +13,12 @@ import com.njuse.jvmfinal.instructions.invoke.INVOKE_VIRTUAL;
 import com.njuse.jvmfinal.instructions.load.*;
 import com.njuse.jvmfinal.instructions.math.algorithm.*;
 import com.njuse.jvmfinal.instructions.math.bool.*;
+import com.njuse.jvmfinal.instructions.math.shift.ISHL;
+import com.njuse.jvmfinal.instructions.math.shift.ISHR;
 import com.njuse.jvmfinal.instructions.references.*;
 import com.njuse.jvmfinal.instructions.stack.DUP;
 import com.njuse.jvmfinal.instructions.stack.POP;
-import com.njuse.jvmfinal.instructions.store.ASTORE;
-import com.njuse.jvmfinal.instructions.store.ASTORE_N;
-import com.njuse.jvmfinal.instructions.store.ISTORE;
-import com.njuse.jvmfinal.instructions.store.ISTORE_N;
+import com.njuse.jvmfinal.instructions.store.*;
 import com.njuse.jvmfinal.instructions.control.LRETURN;
 
 import java.util.HashMap;
@@ -66,10 +66,29 @@ public class Decoder {
         opMap.put(OpCode.IAND,new IAND());
         opMap.put(OpCode.IXOR,new IXOR());
         opMap.put(OpCode.IOR,new IOR());
+        opMap.put(OpCode.INEG,new INEG());
         opMap.put(OpCode.LADD,new LADD());
         opMap.put(OpCode.LAND,new LAND());
         opMap.put(OpCode.LXOR,new LXOR());
         opMap.put(OpCode.LOR,new LOR());
+
+        opMap.put(OpCode.I2B,new I2B());
+        opMap.put(OpCode.I2C,new I2C());
+        opMap.put(OpCode.I2S,new I2S());
+        opMap.put(OpCode.I2D,new I2D());
+        opMap.put(OpCode.I2F,new I2F());
+        opMap.put(OpCode.D2F,new D2F());
+        opMap.put(OpCode.D2I,new D2I());
+        opMap.put(OpCode.D2L,new D2L());
+        opMap.put(OpCode.F2D,new F2D());
+        opMap.put(OpCode.F2I,new F2I());
+        opMap.put(OpCode.F2L,new F2L());
+        opMap.put(OpCode.L2D,new L2D());
+        opMap.put(OpCode.L2F,new L2F());
+        opMap.put(OpCode.L2I,new L2I());
+
+        opMap.put(OpCode.ISHL,new ISHL());
+        opMap.put(OpCode.ISHR,new ISHR());
 
         opMap.put(OpCode.LCMP,new LCMP());
         opMap.put(OpCode.FCMPL,new FCMPL());
@@ -94,15 +113,23 @@ public class Decoder {
         opMap.put(OpCode.ALOAD_1, new ALOAD_N(1));
         opMap.put(OpCode.ALOAD_2, new ALOAD_N(2));
         opMap.put(OpCode.ALOAD_3, new ALOAD_N(3));
+        opMap.put(OpCode.DLOAD_0, new DLOAD_N(0));
+        opMap.put(OpCode.DLOAD_1, new DLOAD_N(1));
+        opMap.put(OpCode.DLOAD_2, new DLOAD_N(2));
+        opMap.put(OpCode.DLOAD_3, new DLOAD_N(3));
 //        opMap.put(OpCode.IALOAD, new IALOAD());
 //        opMap.put(OpCode.LALOAD, new LALOAD());
 
         opMap.put(OpCode.ASTORE, new ASTORE());
+        opMap.put(OpCode.LSTORE,new LSTORE());
         opMap.put(OpCode.ISTORE_0, new ISTORE_N(0));
         opMap.put(OpCode.ISTORE_1, new ISTORE_N(1));
         opMap.put(OpCode.ISTORE_2, new ISTORE_N(2));
         opMap.put(OpCode.ISTORE_3, new ISTORE_N(3));
-//        opMap.put(OpCode.LSTORE_0, new LSTORE_N(0));
+        opMap.put(OpCode.LSTORE_0, new LSTORE_N(0));
+        opMap.put(OpCode.LSTORE_1,new LSTORE_N(1));
+        opMap.put(OpCode.LSTORE_2,new LSTORE_N(2));
+        opMap.put(OpCode.LSTORE_3,new LSTORE_N(3));
 //        opMap.put(OpCode.DSTORE_3, new DSTORE_N(3));
         opMap.put(OpCode.ASTORE_0, new ASTORE_N(0));
         opMap.put(OpCode.ASTORE_1, new ASTORE_N(1));
@@ -123,6 +150,7 @@ public class Decoder {
         opMap.put(OpCode.IFGE,new IFGE());
         opMap.put(OpCode.IFGT,new IFGT());
         opMap.put(OpCode.IFLE,new IFLE());
+        opMap.put(OpCode.IFNULL,new IFNULL());
         opMap.put(OpCode.GOTO_, new GOTO());
 
 //        opMap.put(OpCode.JSR, new JSR());
