@@ -167,6 +167,7 @@ public class Decoder {
         opMap.put(OpCode.IFGT,new IFGT());
         opMap.put(OpCode.IFLE,new IFLE());
         opMap.put(OpCode.IFNULL,new IFNULL());
+        opMap.put(OpCode.IFNONNULL,new IFNONNULL());
         opMap.put(OpCode.GOTO_, new GOTO());
 
 //        opMap.put(OpCode.JSR, new JSR());
