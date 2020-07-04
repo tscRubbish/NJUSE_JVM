@@ -45,10 +45,10 @@ public class INVOKE_STATIC extends Index16Instruction {
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
                 toInvoke.getMaxStack(), toInvoke.getMaxLocal()+1);
         Vars localVars = newFrame.getLocalVars();
-
+        //System.out.println(toInvoke.getMaxLocal()+1+"  "+args.length);
         int argc = toInvoke.getArgc();
-        for (int i = 1; i < args.length + 1; i++) {
-            localVars.setSlot(i, args[argc - i]);
+        for (int i = 0; i < args.length; i++) {
+            localVars.setSlot(i, args[argc - i-1]);
         }
 
         frame.getThread().pushFrame(newFrame);
@@ -108,6 +108,7 @@ public class INVOKE_STATIC extends Index16Instruction {
         Slot[] argv = new Slot[argc];
         for (int i = 0; i < argc; i++) {
             argv[i] = frame.getOperandStack().popSlot();
+            //System.out.println(argv[i].getValue());
         }
         return argv;
     }

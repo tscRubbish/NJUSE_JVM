@@ -12,6 +12,7 @@ public abstract class IFCOND extends BranchInstruction {
     @Override
     public void execute(StackFrame frame) {
         int i=frame.getOperandStack().popInt();
+        //System.out.println(frame.getMethod().getName()+" "+this.toString()+"  "+i);
         if (condition(i)){
             frame.setNextPC(frame.getNextPC()-3+offset);
         }
