@@ -48,6 +48,7 @@ public class Interpreter {
             int nextPC = codeReader.position();
             oriTop.setNextPC(nextPC);
             instruction.execute(oriTop);
+            //System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
             //check whether there's a new frame
             //and whether there's more frame to exec
             StackFrame newTop = thread.getTopFrame();
