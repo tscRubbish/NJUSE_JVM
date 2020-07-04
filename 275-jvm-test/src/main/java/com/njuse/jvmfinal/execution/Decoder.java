@@ -71,6 +71,7 @@ public class Decoder {
         opMap.put(OpCode.LAND,new LAND());
         opMap.put(OpCode.LXOR,new LXOR());
         opMap.put(OpCode.LOR,new LOR());
+        opMap.put(OpCode.FADD,new FADD());
 
         opMap.put(OpCode.I2B,new I2B());
         opMap.put(OpCode.I2C,new I2C());
