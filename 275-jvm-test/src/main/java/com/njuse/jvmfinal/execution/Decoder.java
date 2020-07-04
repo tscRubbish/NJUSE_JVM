@@ -122,6 +122,7 @@ public class Decoder {
 
         opMap.put(OpCode.ASTORE, new ASTORE());
         opMap.put(OpCode.LSTORE,new LSTORE());
+        opMap.put(OpCode.FSTORE,new FSTORE());
         opMap.put(OpCode.ISTORE_0, new ISTORE_N(0));
         opMap.put(OpCode.ISTORE_1, new ISTORE_N(1));
         opMap.put(OpCode.ISTORE_2, new ISTORE_N(2));
@@ -135,7 +136,10 @@ public class Decoder {
         opMap.put(OpCode.ASTORE_1, new ASTORE_N(1));
         opMap.put(OpCode.ASTORE_2, new ASTORE_N(2));
         opMap.put(OpCode.ASTORE_3, new ASTORE_N(3));
-
+        opMap.put(OpCode.FSTORE_0, new FSTORE_N(0));
+        opMap.put(OpCode.FSTORE_1, new FSTORE_N(1));
+        opMap.put(OpCode.FSTORE_2, new FSTORE_N(2));
+        opMap.put(OpCode.FSTORE_3, new FSTORE_N(3));
 
         opMap.put(OpCode.IF_ACMPEQ,new IF_ACMPEQ());
         opMap.put(OpCode.IF_ICMPNE,new IF_ICMPNE());
