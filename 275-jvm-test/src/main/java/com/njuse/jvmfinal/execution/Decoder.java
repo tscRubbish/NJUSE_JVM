@@ -119,6 +119,10 @@ public class Decoder {
         opMap.put(OpCode.DLOAD_1, new DLOAD_N(1));
         opMap.put(OpCode.DLOAD_2, new DLOAD_N(2));
         opMap.put(OpCode.DLOAD_3, new DLOAD_N(3));
+        opMap.put(OpCode.FLOAD_0, new FLOAD_N(0));
+        opMap.put(OpCode.FLOAD_1, new FLOAD_N(1));
+        opMap.put(OpCode.FLOAD_2, new FLOAD_N(2));
+        opMap.put(OpCode.FLOAD_3, new FLOAD_N(3));
 //        opMap.put(OpCode.IALOAD, new IALOAD());
 //        opMap.put(OpCode.LALOAD, new LALOAD());
 
