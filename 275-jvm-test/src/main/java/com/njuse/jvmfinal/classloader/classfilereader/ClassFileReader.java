@@ -100,9 +100,6 @@ public class ClassFileReader {
         throw new ClassNotFoundException();
     }
     private void checkAndSetDefault() throws FileNotFoundException {
-        if (bootClasspath == null) {
-        }
-
         if (extClasspath == null) {
             File f = new File(String.join(FILE_SEPARATOR, ".", "jre"));
             if (f.exists()) {
@@ -114,12 +111,10 @@ public class ClassFileReader {
                     if (!f.exists()) {
                         throw new FileNotFoundException("Cannot find JRE folder!");
                     }
-
                     setBootAndExtClasspath(String.join(FILE_SEPARATOR, JAVA_HOME, "jre"));
                 }
             }
         }
-
         if (userClasspath == null) {
             setUserClasspath(".");
         }

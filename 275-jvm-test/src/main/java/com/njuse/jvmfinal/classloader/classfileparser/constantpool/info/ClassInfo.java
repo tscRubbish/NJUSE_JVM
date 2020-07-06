@@ -2,9 +2,7 @@ package com.njuse.jvmfinal.classloader.classfileparser.constantpool.info;
 
 import com.njuse.jvmfinal.classloader.classfileparser.constantpool.ConstantPool;
 
-/**
- * todo
- */
+
 public class ClassInfo extends ConstantPoolInfo {
     private int nameIndex;
 

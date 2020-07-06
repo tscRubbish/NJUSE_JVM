@@ -13,8 +13,8 @@ public class Interpreter {
 
     public static void interpret(JThread thread) {
         initCodeReader(thread);
-         loop(thread);
-         return;
+        loop(thread);
+        return;
     }
 
     /**
@@ -31,7 +31,6 @@ public class Interpreter {
     private static void loop(JThread thread) {
         while (true) {
             StackFrame oriTop = thread.getTopFrame();
-            //parse code attribute for VO
             Method method = oriTop.getMethod();
             if (!method.isParsed()) {
                 method.parseCode();

@@ -196,6 +196,7 @@ public class Decoder {
         opMap.put(OpCode.ARRAYLENGTH,new ARRAYLENGTH());
         opMap.put(OpCode.NEWARRAY,new NEWARRAY());
         opMap.put(OpCode.MULTIANEWARRAY,new MULTIANEWARRAY());
+        opMap.put(OpCode.ANEWARRAY,new ANEWARRAY());
         opMap.put(OpCode.INSTANCEOF_,new INSTANCEOF());
         //TODO: 插入 invoke static
         opMap.put(OpCode.INVOKESTATIC,new INVOKE_STATIC());
