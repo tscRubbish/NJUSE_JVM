@@ -4,8 +4,8 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 
 public class DLOAD_N extends LOAD_N {
     public DLOAD_N(int index) {
-        checkIndex(index);
-        this.index = index;
+        if (index >= valid[0] && index <= valid[valid.length - 1])
+            this.index = index;
     }
     /**
      * TODO：实现这条指令

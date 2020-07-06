@@ -6,9 +6,6 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.struct.Slot;
 
 public class DUP extends NoOperandsInstruction {
-    public DUP() {
-    }
-
     public void execute(StackFrame frame) {
         OperandStack stack = frame.getOperandStack();
         Slot slot = stack.popSlot();

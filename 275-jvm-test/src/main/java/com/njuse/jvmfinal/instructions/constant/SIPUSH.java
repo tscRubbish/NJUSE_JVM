@@ -8,9 +8,6 @@ import java.nio.ByteBuffer;
 public class SIPUSH extends Instruction {
     private short val;
 
-    public SIPUSH() {
-    }
-
     public void fetchOperands(ByteBuffer reader) {
         this.val = reader.getShort();
     }

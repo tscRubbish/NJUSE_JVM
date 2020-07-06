@@ -33,19 +33,21 @@ public class INVOKE_VIRTUAL extends Index16Instruction {
 
         frame.getThread().pushFrame(newFrame);
 
-        if (method.isNative()) {
-            if (method.getName().equals("registerNatives")) {
+        checkNative(toInvoke,frame);
+    }
+    private void checkNative(Method toInvoke,StackFrame frame){
+        if (toInvoke.isNative()) {
+            if (toInvoke.getName().equals("registerNatives")) {
                 frame.getThread().popFrame();
             } else {
                 System.out.println("Native method:"
-                        + method.getClazz().getName()
-                        + method.name
-                        + method.descriptor);
+                        + toInvoke.getClazz().getName()
+                        + toInvoke.name
+                        + toInvoke.descriptor);
                 frame.getThread().popFrame();
             }
         }
     }
-
     private StackFrame prepareNewFrame(StackFrame frame, int argc, Slot[] argv, JObject objectRef, Method toInvoke) {
         StackFrame newFrame = new StackFrame(frame.getThread(), toInvoke,
                 toInvoke.getMaxStack(), toInvoke.getMaxLocal() + 1);

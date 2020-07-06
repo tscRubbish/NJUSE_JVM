@@ -9,7 +9,6 @@ public class IXOR extends NoOperandsInstruction {
         OperandStack stack = frame.getOperandStack();
         int val2 = stack.popInt();
         int val1 = stack.popInt();
-        int res = val1 ^ val2;
-        stack.pushInt(res);
+        stack.pushInt(val1^val2);
     }
 }

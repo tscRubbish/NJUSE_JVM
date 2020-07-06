@@ -4,7 +4,6 @@ import com.njuse.jvmfinal.instructions.base.Instruction;
 import com.njuse.jvmfinal.memory.jclass.Method;
 import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
-import com.njuse.jvmfinal.vo.StateVO;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -12,9 +11,10 @@ import java.util.ArrayList;
 public class Interpreter {
     private static ByteBuffer codeReader;
 
-    public static ArrayList<StateVO> interpret(JThread thread) {
+    public static void interpret(JThread thread) {
         initCodeReader(thread);
-        return loop(thread);
+         loop(thread);
+         return;
     }
 
     /**
@@ -28,7 +28,7 @@ public class Interpreter {
         codeReader.position(nextPC);
     }
 
-    private static ArrayList<StateVO> loop(JThread thread) {
+    private static void loop(JThread thread) {
         while (true) {
             StackFrame oriTop = thread.getTopFrame();
             //parse code attribute for VO
@@ -54,7 +54,7 @@ public class Interpreter {
             StackFrame newTop = thread.getTopFrame();
 
             if (newTop == null) {
-                return null;
+                return ;
             }
             //System.out.println("newFrame="+newTop.getMethod().getName()+" ordFrame="+oriTop.getMethod().getName());
             if (oriTop != newTop) {

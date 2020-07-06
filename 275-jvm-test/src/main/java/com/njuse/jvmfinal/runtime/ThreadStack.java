@@ -11,7 +11,7 @@ import java.util.Stack;
 public class ThreadStack {
     private static int maxSize;
     private Stack<StackFrame> stack;
-    private Stack<Boolean> frameState;//true present frame is new added
+    //private Stack<Boolean> frameState;//true present frame is new added
     private int currentSize;
 
     static {
@@ -20,7 +20,7 @@ public class ThreadStack {
 
     public ThreadStack() {
         stack = new Stack<>();
-        frameState = new Stack<>();
+        //frameState = new Stack<>();
     }
 
     public boolean isEmpty() {
@@ -32,7 +32,7 @@ public class ThreadStack {
             throw new StackOverflowError();
         }
         stack.push(frame);
-        frameState.push(true);
+        //frameState.push(true);
         currentSize++;
     }
 
@@ -41,7 +41,7 @@ public class ThreadStack {
             throw new EmptyStackException();
         }
         stack.pop();
-        frameState.pop();
+        //frameState.pop();
         currentSize--;
     }
 

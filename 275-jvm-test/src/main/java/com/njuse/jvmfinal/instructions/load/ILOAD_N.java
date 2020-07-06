@@ -4,7 +4,7 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 
 public class ILOAD_N extends LOAD_N {
     public ILOAD_N(int index) {
-        checkIndex(index);
+        if (index >= valid[0] && index <= valid[valid.length - 1])
         this.index = index;
     }
     /**

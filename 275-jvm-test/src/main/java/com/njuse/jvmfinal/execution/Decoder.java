@@ -104,6 +104,7 @@ public class Decoder {
         opMap.put(OpCode.FLOAD,new FLOAD());
         opMap.put(OpCode.DLOAD,new DLOAD());
         opMap.put(OpCode.ALOAD,new ALOAD());
+        opMap.put(OpCode.AALOAD,new AALOAD());
         opMap.put(OpCode.ILOAD_0, new ILOAD_N(0));
         opMap.put(OpCode.ILOAD_1, new ILOAD_N(1));
         opMap.put(OpCode.ILOAD_2, new ILOAD_N(2));
@@ -124,13 +125,15 @@ public class Decoder {
         opMap.put(OpCode.FLOAD_1, new FLOAD_N(1));
         opMap.put(OpCode.FLOAD_2, new FLOAD_N(2));
         opMap.put(OpCode.FLOAD_3, new FLOAD_N(3));
-//        opMap.put(OpCode.IALOAD, new IALOAD());
+        opMap.put(OpCode.IALOAD, new IALOAD());
 //        opMap.put(OpCode.LALOAD, new LALOAD());
 
+        opMap.put(OpCode.AASTORE,new AASTORE());
         opMap.put(OpCode.ASTORE, new ASTORE());
         opMap.put(OpCode.LSTORE,new LSTORE());
         opMap.put(OpCode.FSTORE,new FSTORE());
         opMap.put(OpCode.DSTORE,new DSTORE());
+        opMap.put(OpCode.IASTORE,new IASTORE());
         opMap.put(OpCode.ISTORE_0, new ISTORE_N(0));
         opMap.put(OpCode.ISTORE_1, new ISTORE_N(1));
         opMap.put(OpCode.ISTORE_2, new ISTORE_N(2));
@@ -188,6 +191,9 @@ public class Decoder {
         opMap.put(OpCode.PUTFIELD, new PUTFIELD());
         opMap.put(OpCode.INVOKEVIRTUAL, new INVOKE_VIRTUAL());
         opMap.put(OpCode.INVOKESPECIAL, new INVOKE_SPECIAL());
+        opMap.put(OpCode.NEWARRAY,new NEWARRAY());
+        opMap.put(OpCode.MULTIANEWARRAY,new MULTIANEWARRAY());
+        opMap.put(OpCode.INSTANCEOF_,new INSTANCEOF());
         //TODO: 插入 invoke static
         opMap.put(OpCode.INVOKESTATIC,new INVOKE_STATIC());
 

@@ -21,6 +21,6 @@ public class LCONST_N extends NoOperandsInstruction {
 
     public String toString() {
         String simpleName = this.getClass().getSimpleName();
-        return simpleName.substring(0, simpleName.length() - 1) + this.val;
+        return simpleName + this.val;
     }
 }

@@ -8,8 +8,7 @@ public class IFNONNULL extends BranchInstruction {
     public void execute(StackFrame frame) {
         JObject ref = frame.getOperandStack().popObjectRef();
         if (!ref.isNull()) {
-            int branchPC = frame.getNextPC() - 3 + super.offset;
-            frame.setNextPC(branchPC);
+            frame.setNextPC(frame.getNextPC() - 3 + super.offset);
         }
 
     }

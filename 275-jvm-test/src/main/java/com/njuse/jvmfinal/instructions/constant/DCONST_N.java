@@ -8,17 +8,11 @@ public class DCONST_N extends NoOperandsInstruction {
     private static double[] valid = new double[]{0.0D, 1.0D};
 
     public DCONST_N(double val) {
-        double[] var3 = valid;
-        int var4 = var3.length;
-
-        for(int var5 = 0; var5 < var4; ++var5) {
-            double n = var3[var5];
-            if (n == val) {
-                this.val = val;
+        for (double d:valid)
+            if (d==val) {
+                this.val=val;
                 return;
             }
-        }
-
         throw new IllegalArgumentException();
     }
 
@@ -29,6 +23,6 @@ public class DCONST_N extends NoOperandsInstruction {
     public String toString() {
         String suffix = (int)this.val + "";
         String simpleName = this.getClass().getSimpleName();
-        return simpleName.substring(0, simpleName.length() - 1) + suffix;
+        return simpleName + suffix;
     }
 }

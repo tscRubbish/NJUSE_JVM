@@ -1,6 +1,8 @@
 package com.njuse.jvmfinal.instructions.store;
 
+import com.njuse.jvmfinal.runtime.OperandStack;
 import com.njuse.jvmfinal.runtime.StackFrame;
+import com.njuse.jvmfinal.runtime.Vars;
 
 public class FSTORE_N extends STORE_N {
     public FSTORE_N(int index) {
@@ -9,7 +11,9 @@ public class FSTORE_N extends STORE_N {
     }
 
     public void execute(StackFrame frame) {
-        float val = frame.getOperandStack().popFloat();
-        frame.getLocalVars().setFloat(this.index, val);
+        OperandStack stack=frame.getOperandStack();
+        Vars vars=frame.getLocalVars();
+        float val = stack.popFloat();
+        vars.setFloat(this.index, val);
     }
 }

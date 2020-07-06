@@ -5,7 +5,6 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 
 public class FLOAD extends Index8Instruction {
     public void execute(StackFrame frame) {
-        float val = frame.getLocalVars().getFloat(this.index);
-        frame.getOperandStack().pushFloat(val);
+        frame.getOperandStack().pushFloat(frame.getLocalVars().getFloat(index));
     }
 }

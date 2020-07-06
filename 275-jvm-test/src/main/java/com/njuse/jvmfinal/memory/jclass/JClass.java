@@ -9,7 +9,9 @@ import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.RuntimeConstantPool;
 import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.Vars;
+import com.njuse.jvmfinal.runtime.struct.ArrayObject;
 import com.njuse.jvmfinal.runtime.struct.NonArrayObject;
+import com.njuse.jvmfinal.runtime.struct.array.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,6 +36,7 @@ public class JClass {
     private Vars staticVars; // 请自行设计数据结构
     private InitState initState; // 请自行设计初始化状态
 
+    public JClass(){}
     public JClass(ClassFile classFile) {
         this.accessFlags = classFile.getAccessFlags();
         this.name = classFile.getClassName();
@@ -89,6 +92,40 @@ public class JClass {
 
     public NonArrayObject newObject() {
         return new NonArrayObject(this);
+    }
+
+    public ArrayObject newArrayObject(int len,String type){
+        ArrayObject arr;
+        switch (type) {
+            case "boolean":
+                arr=new BooleanArrayObject(len, type);
+                break;
+            case "char":
+                arr=new CharArrayObject(len,type);
+                break;
+            case "float":
+                arr=new FloatArrayObject(len,type);
+                break;
+            case "double":
+                arr=new DoubleArrayObject(len,type);
+                break;
+            case "byte":
+                arr=new ByteArrayObject(len,type);
+                break;
+            case "short":
+                arr=new ShortArrayObject(len,type);
+                break;
+            case "int":
+                arr=new IntArrayObject(len,type);
+                break;
+            case "Long":
+                arr=new LongArrayObject(len,type);
+                break;
+            default:
+                arr=new RefArrayObject(len,type);
+                break;
+        }
+        return arr;
     }
 
     public JClass getComponentClass() {

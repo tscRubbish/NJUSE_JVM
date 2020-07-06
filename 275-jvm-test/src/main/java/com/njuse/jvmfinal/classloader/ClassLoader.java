@@ -39,9 +39,21 @@ public class ClassLoader {
     public JClass loadClass(String className, EntryType initiatingEntry) throws ClassNotFoundException {
         JClass ret;
         if ((ret = methodArea.findClass(className)) == null) {
-            return loadNonArrayClass(className, initiatingEntry);
+            if (className.charAt(0)=='[')  return loadArrayClass(className,initiatingEntry);
+            else return loadNonArrayClass(className, initiatingEntry);
         }
         return ret;
+    }
+
+    private JClass loadArrayClass(String className,EntryType initiatingEntry) throws ClassNotFoundException{
+        JClass arr=new JClass();
+        arr.setInitState(InitState.SUCCESS);
+        arr.setAccessFlags((short)1);
+        arr.setName(className);
+        arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
+        arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry),loadClass("java/io/Serializable", initiatingEntry)});
+        this.methodArea.addClass(className,arr);
+        return arr;
     }
 
     private JClass loadNonArrayClass(String className, EntryType initiatingEntry) throws ClassNotFoundException {
@@ -264,7 +276,7 @@ public class ClassLoader {
         Vars var=clazz.getStaticVars();
         if (!field.isFinal()) return;
         int sid=field.getSlotID(),cvi=field.getConstValueIndex();
-        System.out.println(field.descriptor+" "+field.name+" "+sid);
+        //System.out.println(field.descriptor+" "+field.name+" "+sid);
         switch (field.descriptor){
             case "I":
             case "C":

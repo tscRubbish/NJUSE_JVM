@@ -12,9 +12,6 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.Vars;
 
 public class PUTSTATIC extends  Index16Instruction {
-    public PUTSTATIC() {
-    }
-
     public void execute(StackFrame frame) {
         Method currentMethod = frame.getMethod();
         JClass currentClazz = currentMethod.getClazz();
@@ -80,8 +77,7 @@ public class PUTSTATIC extends  Index16Instruction {
                 case '[':
                     staticVars.setObjectRef(slotID, stack.popObjectRef());
             }
-        } catch (ClassNotFoundException var12) {
-            var12.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
         }
 
     }

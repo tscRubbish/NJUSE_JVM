@@ -7,9 +7,8 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 public class D2L extends NoOperandsInstruction {
     public void execute(StackFrame frame) {
         OperandStack stack = frame.getOperandStack();
-        double val1 = stack.popDouble();
-        long val2 = (long)val1;
-        stack.pushLong(val2);
+        long val = (long) stack.popDouble();
+        stack.pushLong(val);
     }
 }
 

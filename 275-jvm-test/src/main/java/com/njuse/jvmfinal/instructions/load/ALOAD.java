@@ -6,7 +6,6 @@ import com.njuse.jvmfinal.runtime.struct.JObject;
 
 public class ALOAD extends Index8Instruction {
     public void execute(StackFrame frame) {
-        JObject ref = frame.getLocalVars().getObjectRef(this.index);
-        frame.getOperandStack().pushObjectRef(ref);
+        frame.getOperandStack().pushObjectRef(frame.getLocalVars().getObjectRef(index));
     }
 }

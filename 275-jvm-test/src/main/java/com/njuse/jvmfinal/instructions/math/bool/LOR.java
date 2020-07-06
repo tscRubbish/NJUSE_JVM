@@ -9,7 +9,6 @@ public class LOR extends NoOperandsInstruction {
         OperandStack stack = frame.getOperandStack();
         long val2 = stack.popLong();
         long val1 = stack.popLong();
-        long res = val1 | val2;
-        stack.pushLong(res);
+        stack.pushLong(val1|val2);
     }
 }

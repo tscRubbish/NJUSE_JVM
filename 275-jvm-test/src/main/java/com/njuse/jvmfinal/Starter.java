@@ -17,7 +17,7 @@ public class Starter {
 
     public static void main(String[] args) {
         //Starter.runTest("cases.light.LightEasyStaticTest", cp);
-        Starter.runTest("cases.light.LightEasyStaticTest", cp);
+        Starter.runTest("cases.light.Test1", cp);
     }
 
     /**
