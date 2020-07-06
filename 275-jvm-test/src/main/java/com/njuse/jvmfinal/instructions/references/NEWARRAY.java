@@ -1,6 +1,7 @@
 package com.njuse.jvmfinal.instructions.references;
 
 import com.njuse.jvmfinal.classloader.ClassLoader;
+import com.njuse.jvmfinal.classloader.classfilereader.classpath.EntryType;
 import com.njuse.jvmfinal.instructions.base.Index8Instruction;
 import com.njuse.jvmfinal.memory.JHeap;
 import com.njuse.jvmfinal.memory.jclass.JClass;
@@ -15,31 +16,32 @@ public class NEWARRAY extends Index8Instruction {
         JClass clazz;
         String type= ArrayType.getName(index);
         ClassLoader classLoader=ClassLoader.getInstance();
+        EntryType en=frame.getMethod().getClazz().getLoadEntryType();
         try {
             switch (index) {
                 case 4:
-                    clazz = classLoader.loadClass("[Z", null);
+                    clazz = classLoader.loadClass("[Z", en);
                     break;
                 case 5:
-                    clazz = classLoader.loadClass("[C", null);
+                    clazz = classLoader.loadClass("[C", en);
                     break;
                 case 6:
-                    clazz = classLoader.loadClass("[F", null);
+                    clazz = classLoader.loadClass("[F", en);
                     break;
                 case 7:
-                    clazz = classLoader.loadClass("[D", null);
+                    clazz = classLoader.loadClass("[D", en);
                     break;
                 case 8:
-                    clazz = classLoader.loadClass("[B", null);
+                    clazz = classLoader.loadClass("[B", en);
                     break;
                 case 9:
-                    clazz = classLoader.loadClass("[S", null);
+                    clazz = classLoader.loadClass("[S", en);
                     break;
                 case 10:
-                    clazz = classLoader.loadClass("[I", null);
+                    clazz = classLoader.loadClass("[I", en);
                     break;
                 case 11:
-                    clazz = classLoader.loadClass("[L", null);
+                    clazz = classLoader.loadClass("[L", en);
                     break;
                 default:
                     throw new RuntimeException();
