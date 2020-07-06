@@ -14,6 +14,6 @@ public class CALOAD extends NoOperandsInstruction {
         if (index>=0&&index<arr.getLen()){
             frame.getOperandStack().pushInt(arr.getArray()[index]);
         }
-        throw new ArrayIndexOutOfBoundsException();
+        else throw new ArrayIndexOutOfBoundsException();
     }
 }

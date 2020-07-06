@@ -14,6 +14,6 @@ public class CASTORE extends NoOperandsInstruction {
         if (index>=0&&index<carr.getLen()){
             carr.getArray()[index]=value;
         }
-        throw new ArrayIndexOutOfBoundsException();
+        else throw new ArrayIndexOutOfBoundsException();
     }
 }

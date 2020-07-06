@@ -13,6 +13,6 @@ public class IASTORE extends NoOperandsInstruction {
         if (index>=0&&index<iarr.getLen()){
             iarr.getArray()[index]=value;
         }
-        throw new ArrayIndexOutOfBoundsException();
+        else throw new ArrayIndexOutOfBoundsException();
     }
 }

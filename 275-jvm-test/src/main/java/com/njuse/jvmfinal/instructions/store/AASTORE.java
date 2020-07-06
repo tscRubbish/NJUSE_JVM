@@ -15,6 +15,6 @@ public class AASTORE extends NoOperandsInstruction {
         if (index<arr.getLen()&&index>=0) {
             arr.getArray()[index]=value;
         }
-        throw new ArrayIndexOutOfBoundsException();
+        else throw new ArrayIndexOutOfBoundsException();
     }
 }
