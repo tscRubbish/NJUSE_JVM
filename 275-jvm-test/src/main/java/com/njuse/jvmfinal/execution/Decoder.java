@@ -193,6 +193,7 @@ public class Decoder {
         opMap.put(OpCode.PUTFIELD, new PUTFIELD());
         opMap.put(OpCode.INVOKEVIRTUAL, new INVOKE_VIRTUAL());
         opMap.put(OpCode.INVOKESPECIAL, new INVOKE_SPECIAL());
+        opMap.put(OpCode.ARRAYLENGTH,new ARRAYLENGTH());
         opMap.put(OpCode.NEWARRAY,new NEWARRAY());
         opMap.put(OpCode.MULTIANEWARRAY,new MULTIANEWARRAY());
         opMap.put(OpCode.INSTANCEOF_,new INSTANCEOF());
