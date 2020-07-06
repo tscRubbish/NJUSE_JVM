@@ -23,7 +23,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
     @Override
     public void fetchOperands(ByteBuffer reader) {
         this.index=reader.getShort()&'\uffff';
-        this.count=(reader.getShort()&'\uffff')>>8;
+        reader.getShort();
     }
 
     /**
