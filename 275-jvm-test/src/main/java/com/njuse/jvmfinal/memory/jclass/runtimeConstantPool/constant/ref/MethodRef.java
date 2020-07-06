@@ -23,6 +23,7 @@ public class MethodRef extends MemberRef {
      * @param clazz 对象的引用
      */
     public Method resolveMethodRef(JClass clazz) {
+        assert clazz!=null;
         if (this.method!=null) return method;
         for (JClass jc = clazz; jc!=null; jc=jc.getSuperClass()){
             Optional optional=jc.resolveMethod(this.name,this.descriptor);

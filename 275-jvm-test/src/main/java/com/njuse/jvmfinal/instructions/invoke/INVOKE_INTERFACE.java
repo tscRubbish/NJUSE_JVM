@@ -46,7 +46,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         Method toInvoke = ((InterfaceMethodRef) methodRef).resolveInterfaceMethodRef(clazz);
         //System.out.println(toInvoke.getAccessFlags());
         //System.out.println(Invoke.getAccessFlags());
-        if (checkHack(objectRef,toInvoke,frame)) return;
+        //if (checkHack(objectRef,toInvoke,frame)) return;
         StackFrame newFrame = prepareNewFrame(frame, argc, argv, objectRef, toInvoke);
         frame.getThread().pushFrame(newFrame);
 
