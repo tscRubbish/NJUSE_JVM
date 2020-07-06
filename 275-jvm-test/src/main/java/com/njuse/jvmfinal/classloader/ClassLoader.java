@@ -71,7 +71,7 @@ public class ClassLoader {
 
             return clazz;
         } catch (IOException e) {
-            System.out.println(className);
+            //System.out.println(className);
             throw new ClassNotFoundException();
         }
     }
@@ -129,7 +129,6 @@ public class ClassLoader {
          *
          * Use the load entry(defining entry) as initiating entry of interfaces
          */
-        if (clazz.getInterfaceNames().length==0) return;
         int cnt=0,len=clazz.getInterfaceNames().length;
         JClass[] interfaces=new JClass[len];
         String[] interfaceNames=clazz.getInterfaceNames();
@@ -242,13 +241,13 @@ public class ClassLoader {
                 vars.setInt(sid,0);
                 break;
             case 'F':
-                vars.setFloat(sid,0);
+                vars.setFloat(sid,0.0F);
                 break;
             case 'D':
-                vars.setDouble(sid,0);
+                vars.setDouble(sid,0.0D);
                 break;
             case 'J':
-                vars.setLong(sid,0);
+                vars.setLong(sid,0L);
                 break;
             case 'L':
                 vars.setObjectRef(sid,new NullObject());
@@ -280,7 +279,6 @@ public class ClassLoader {
          *      long longVal = ((LongWrapper) runtimeConstantPool.getConstant(constantPoolIndex)).getValue();
          */
         Vars var=clazz.getStaticVars();
-        if (!field.isFinal()) return;
         int sid=field.getSlotID(),cvi=field.getConstValueIndex();
         //System.out.println(field.descriptor+" "+field.name+" "+sid);
         switch (field.descriptor.charAt(0)){
