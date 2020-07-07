@@ -19,7 +19,7 @@ public class ANEWARRAY extends Index16Instruction {
             OperandStack stack = frame.getOperandStack();
             int len = stack.popInt();
             JClass arrClass = ClassLoader.getInstance().loadClass(getClassName(clazz),clazz.getLoadEntryType());
-            ArrayObject ref = arrClass.newArrayObject(len,"Ref");
+            ArrayObject ref = arrClass.newArrayObject(len);
             JHeap.getInstance().addObj(ref);
             stack.pushObjectRef(ref);
         } catch (ClassNotFoundException var9) {

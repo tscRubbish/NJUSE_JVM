@@ -94,31 +94,32 @@ public class JClass {
         return new NonArrayObject(this);
     }
 
-    public ArrayObject newArrayObject(int len,String type){
+    public ArrayObject newArrayObject(int len){
         ArrayObject arr;
+        String type=getName();
         switch (type) {
-            case "boolean":
+            case "[Z":
                 arr=new BooleanArrayObject(len, this.name);
                 break;
-            case "char":
+            case "[C":
                 arr=new CharArrayObject(len,this.name);
                 break;
-            case "float":
+            case "[F":
                 arr=new FloatArrayObject(len,this.name);
                 break;
-            case "double":
+            case "[D":
                 arr=new DoubleArrayObject(len,this.name);
                 break;
-            case "byte":
+            case "[B":
                 arr=new ByteArrayObject(len,this.name);
                 break;
-            case "short":
+            case "[S":
                 arr=new ShortArrayObject(len,this.name);
                 break;
-            case "int":
+            case "[I":
                 arr=new IntArrayObject(len,this.name);
                 break;
-            case "long":
+            case "[J":
                 arr=new LongArrayObject(len,this.name);
                 break;
             default:

@@ -46,7 +46,7 @@ public class NEWARRAY extends Index8Instruction {
                 default:
                     throw new RuntimeException();
             }
-            ArrayObject arr=clazz.newArrayObject(len,type);
+            ArrayObject arr=clazz.newArrayObject(len);
             JHeap.getInstance().addObj(arr);
             frame.getOperandStack().pushObjectRef(arr);
         }catch (ClassNotFoundException e){}

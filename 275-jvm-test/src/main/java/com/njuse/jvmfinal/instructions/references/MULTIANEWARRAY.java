@@ -33,7 +33,7 @@ public class MULTIANEWARRAY extends Instruction {
         }catch (ClassNotFoundException e){}
     }
     ArrayObject getMutiArray(int D,JClass clazz,int[] lenarr){
-        ArrayObject arr=clazz.newArrayObject(lenarr[D],"Ref");
+        ArrayObject arr=clazz.newArrayObject(lenarr[D]);
         if (D==dimensions-1)
             return arr;
         ArrayObject target=getMutiArray(D+1,clazz.getComponentClass(),lenarr);

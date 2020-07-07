@@ -12,6 +12,10 @@ public class INSTANCEOF extends Index16Instruction {
     @Override
     public void execute(StackFrame frame) {
         JObject ref=frame.getOperandStack().popObjectRef();
+        if (ref.isNull()) {
+            frame.getOperandStack().pushInt(0);
+            return;
+        }
         RuntimeConstantPool rcp=frame.getMethod().getClazz().getRuntimeConstantPool();
         try{
             JClass clazz=((ClassRef)rcp.getConstant(index)).getResolvedClass();
