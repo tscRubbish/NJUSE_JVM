@@ -98,31 +98,31 @@ public class JClass {
         ArrayObject arr;
         switch (type) {
             case "boolean":
-                arr=new BooleanArrayObject(len, type);
+                arr=new BooleanArrayObject(len, this.name);
                 break;
             case "char":
-                arr=new CharArrayObject(len,type);
+                arr=new CharArrayObject(len,this.name);
                 break;
             case "float":
-                arr=new FloatArrayObject(len,type);
+                arr=new FloatArrayObject(len,this.name);
                 break;
             case "double":
-                arr=new DoubleArrayObject(len,type);
+                arr=new DoubleArrayObject(len,this.name);
                 break;
             case "byte":
-                arr=new ByteArrayObject(len,type);
+                arr=new ByteArrayObject(len,this.name);
                 break;
             case "short":
-                arr=new ShortArrayObject(len,type);
+                arr=new ShortArrayObject(len,this.name);
                 break;
             case "int":
-                arr=new IntArrayObject(len,type);
+                arr=new IntArrayObject(len,this.name);
                 break;
             case "Long":
-                arr=new LongArrayObject(len,type);
+                arr=new LongArrayObject(len,this.name);
                 break;
             default:
-                arr=new RefArrayObject(len,type);
+                arr=new RefArrayObject(len,this.name);
                 break;
         }
         return arr;
@@ -152,7 +152,7 @@ public class JClass {
     /**
      * @return null if this classname is not a primitive type
      */
-    private String getPrimitiveType() {
+     public String getPrimitiveType() {
         HashMap<String, String> primitiveType = new HashMap<>();
         primitiveType.put("void", "V");
         primitiveType.put("boolean", "Z");

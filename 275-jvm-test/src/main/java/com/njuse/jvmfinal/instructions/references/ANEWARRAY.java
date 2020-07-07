@@ -18,7 +18,7 @@ public class ANEWARRAY extends Index16Instruction {
             JClass clazz = ((ClassRef)rcp.getConstant(this.index)).getResolvedClass();
             OperandStack stack = frame.getOperandStack();
             int len = stack.popInt();
-            JClass arrClass = ClassLoader.getInstance().loadClass(getClassName(clazz),null);
+            JClass arrClass = ClassLoader.getInstance().loadClass(getClassName(clazz),clazz.getLoadEntryType());
             ArrayObject ref = arrClass.newArrayObject(len,"Ref");
             JHeap.getInstance().addObj(ref);
             stack.pushObjectRef(ref);
@@ -27,7 +27,9 @@ public class ANEWARRAY extends Index16Instruction {
         }
     }
     String getClassName(JClass clazz){
-        String name="L"+clazz.getName()+";";
+        String name=clazz.getName();
+        if (name.charAt(0)!='['&&clazz.getPrimitiveType()==null)
+            name="L"+name+";";
         return "["+name;
     }
 }
