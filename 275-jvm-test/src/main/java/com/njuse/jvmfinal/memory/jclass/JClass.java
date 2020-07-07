@@ -118,7 +118,7 @@ public class JClass {
             case "int":
                 arr=new IntArrayObject(len,this.name);
                 break;
-            case "Long":
+            case "long":
                 arr=new LongArrayObject(len,this.name);
                 break;
             default:
