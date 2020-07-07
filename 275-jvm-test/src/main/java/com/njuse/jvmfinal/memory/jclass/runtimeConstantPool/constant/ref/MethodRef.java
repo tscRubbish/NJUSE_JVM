@@ -32,11 +32,17 @@ public class MethodRef extends MemberRef {
                 return method;
             }
         }
+        if (clazz.getInterfaces()==null) return this.method;
         for (JClass jc:clazz.getInterfaces()){
-            Optional optional=jc.resolveMethod(this.name,this.descriptor);
-            if (optional.isPresent()) {
-                method=(Method)optional.get();
-                return method;
+            //Optional optional=jc.resolveMethod(this.name,this.descriptor);
+            //if (optional.isPresent()) {
+             //   method=(Method)optional.get();
+             //   return method;
+            //}
+            Method me=resolveMethodRef(jc);
+            if (me!=null) {
+                this.method=me;
+                return this.method;
             }
         }
         return method;
