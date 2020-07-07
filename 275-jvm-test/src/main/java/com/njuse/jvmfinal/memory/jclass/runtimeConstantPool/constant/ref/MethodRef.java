@@ -7,7 +7,9 @@ import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.RuntimeConstantPool;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.Stack;
 
 @Getter
 @Setter
@@ -33,17 +35,26 @@ public class MethodRef extends MemberRef {
             }
         }
         if (clazz.getInterfaces()==null) return this.method;
-        for (JClass jc:clazz.getInterfaces()){
-            //Optional optional=jc.resolveMethod(this.name,this.descriptor);
-            //if (optional.isPresent()) {
-             //   method=(Method)optional.get();
-             //   return method;
-            //}
-            Method me=resolveMethodRef(jc);
-            if (me!=null) {
-                this.method=me;
-                return this.method;
+//        for (JClass jc:clazz.getInterfaces()){
+//            Optional optional=jc.resolveMethod(this.name,this.descriptor);
+//            if (optional.isPresent()) {
+//                method=(Method)optional.get();
+//                return method;
+//            }
+//        }
+        JClass[] ifs = clazz.getInterfaces();
+        Stack<JClass> interfaces = new Stack();
+        interfaces.addAll(Arrays.asList(ifs));
+
+        while(!interfaces.isEmpty()) {
+            JClass clz = (JClass)interfaces.pop();
+            Optional optional= clz.resolveMethod(this.name, this.descriptor);
+            if (optional.isPresent()) {
+                this.method = (Method)optional.get();
+                return method;
             }
+
+            interfaces.addAll(Arrays.asList(clz.getInterfaces()));
         }
         return method;
     }
