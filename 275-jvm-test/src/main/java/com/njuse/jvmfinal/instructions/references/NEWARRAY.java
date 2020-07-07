@@ -41,7 +41,7 @@ public class NEWARRAY extends Index8Instruction {
                     clazz = classLoader.loadClass("[I", en);
                     break;
                 case 11:
-                    clazz = classLoader.loadClass("[L", en);
+                    clazz = classLoader.loadClass("[J", en);
                     break;
                 default:
                     throw new RuntimeException();
