@@ -65,7 +65,6 @@ public class ClassLoader {
             //System.out.println(data.toString());
             //define class
             JClass clazz = defineClass(data, definingEntry);
-            clazz.setInitState(InitState.PREPARED);
             //link class
             linkClass(clazz);
 
@@ -114,9 +113,9 @@ public class ClassLoader {
          *
          * Use the load entry(defining entry) as initiating entry of super class
          */
-        if (clazz.getSuperClassName()=="") return;
+        if (clazz.getSuperClassName().equals("")) return;
         //System.out.println(clazz.getName()+"'s  father="+clazz.getSuperClassName());
-        clazz.setSuperClass(ClassLoader.getInstance().loadClass(clazz.getSuperClassName(),clazz.getLoadEntryType()));
+        clazz.setSuperClass(loadClass(clazz.getSuperClassName(),clazz.getLoadEntryType()));
     }
 
     /**

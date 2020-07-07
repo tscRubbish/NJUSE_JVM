@@ -23,7 +23,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
     @Override
     public void fetchOperands(ByteBuffer reader) {
         this.index=(int)reader.getShort()&0xFFFF;
-        reader.getShort();
+        reader.get();reader.get();
     }
 
     /**
@@ -50,7 +50,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         StackFrame newFrame = prepareNewFrame(frame, argc, argv, objectRef, toInvoke);
         frame.getThread().pushFrame(newFrame);
 
-        checkNative(toInvoke,frame);
+        checkNative(method,frame);
     }
     private boolean checkHack(JObject objectRef,Method toInvoke,StackFrame frame){
         if (objectRef.getClazz().getName().equals("WYM")&&toInvoke.getName().equals("getMyNumber")){
@@ -59,15 +59,15 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         }
         return false;
     }
-    private void checkNative(Method toInvoke,StackFrame frame){
-        if (toInvoke.isNative()) {
-            if (toInvoke.getName().equals("registerNatives")) {
+    private void checkNative(Method method,StackFrame frame){
+        if (method.isNative()) {
+            if (method.getName().equals("registerNatives")) {
                 frame.getThread().popFrame();
             } else {
                 System.out.println("Native method:"
-                        + toInvoke.getClazz().getName()
-                        + toInvoke.name
-                        + toInvoke.descriptor);
+                        + method.getClazz().getName()
+                        + method.name
+                        + method.descriptor);
                 frame.getThread().popFrame();
             }
         }
