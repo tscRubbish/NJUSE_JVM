@@ -50,7 +50,7 @@ public class INVOKE_INTERFACE extends Index16Instruction {
         StackFrame newFrame = prepareNewFrame(frame, argc, argv, objectRef, toInvoke);
         frame.getThread().pushFrame(newFrame);
 
-        checkNative(method,frame);
+        checkNative(method,frame);//注意这里调用的是method
     }
     private boolean checkHack(JObject objectRef,Method toInvoke,StackFrame frame){
         if (objectRef.getClazz().getName().equals("WYM")&&toInvoke.getName().equals("getMyNumber")){

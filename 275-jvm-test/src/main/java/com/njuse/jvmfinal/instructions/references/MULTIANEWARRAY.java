@@ -38,7 +38,8 @@ public class MULTIANEWARRAY extends Instruction {
             return arr;
         //ArrayObject target=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
         for (int i=0;i<lenarr[D];i++){
-            ((RefArrayObject)arr).getArray()[i]=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
+            ((RefArrayObject)arr).getArray()[i]=getMutiArray(D+1,clazz.getComponentClass(),lenarr);//必须分别调用方法
+            //否则每一项指向的对象相同
         }
         return arr;
     }
