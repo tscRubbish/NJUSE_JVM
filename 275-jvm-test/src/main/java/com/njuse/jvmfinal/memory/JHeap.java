@@ -14,7 +14,7 @@ import java.util.Set;
 public class JHeap {
     private static JHeap jHeap = new JHeap();
     private static Set<JObject> objects;
-    private static int maxSize = 50;
+    private static int maxSize = 1000;
     private static int currentSize = 0;
 
     public static JHeap getInstance() {

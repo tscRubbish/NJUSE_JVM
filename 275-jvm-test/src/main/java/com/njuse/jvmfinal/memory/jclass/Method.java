@@ -37,40 +37,43 @@ public class Method extends ClassMember {
     }
 
     private int calculateArgcFromDescriptor(String descriptor) {
-        char[] chars = descriptor.toCharArray();
-        int maxIndex = descriptor.lastIndexOf(')');
-        assert maxIndex != -1;
-        int idx = descriptor.indexOf('(');
-        assert idx != -1;
-        //skip the index of '('
-        idx++;
-        int cnt = 0;
-        while (idx + 1 <= maxIndex) {
-            switch (chars[idx++]) {
+        /**
+         * Add some codes here.
+         * Here are some examples in README!!!
+         *
+         * You should refer to JVM specification for more details
+         *
+         * Beware of long and double type
+         */
+        int len=descriptor.length(),sum=0;
+        for (int i=0;i<len;i++) {
+            char ch=descriptor.charAt(i);
+            switch (ch){
                 case 'J':
-                case 'D':
-                    cnt+=2;
+                case 'D':{
+                    sum+=2;
                     break;
-                    //fall through
-                case 'F':
-                case 'I':
-                case 'B':
-                case 'C':
-                case 'S':
-                case 'Z':
-                    cnt++;
+                }
+                case 'L':{
+                    sum+=1;
+                    while (descriptor.charAt(i)!=';') i++;
                     break;
-                case 'L':
-                    cnt++;
-                    while (idx < maxIndex && chars[idx++] != ';') ;
+                }
+                case '(':break;
+                case ')':{
+                    i=len;break;
+                }
+                case '[':break;
+                default:{
+                    sum+=1;
                     break;
-                case '[':
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Unknown descriptor!");
+                }
             }
         }
-        return cnt;
+        //System.out.println("Des="+getDescriptor());
+        //System.out.println("Name="+getName());
+        //System.out.println("sum="+sum);
+        return sum;
     }
     public void parseCode() {
         ByteBuffer codeReader = ByteBuffer.wrap(this.code);

@@ -97,35 +97,24 @@ public class JClass {
     public ArrayObject newArrayObject(int len){
         ArrayObject arr;
         String type=getName();
-        switch (type) {
-            case "[Z":
+        if (type.equals("[Z"))
                 arr=new BooleanArrayObject(len, this.name);
-                break;
-            case "[C":
+        else if (type.equals("[C"))
                 arr=new CharArrayObject(len,this.name);
-                break;
-            case "[F":
+        else if (type.equals("[F"))
                 arr=new FloatArrayObject(len,this.name);
-                break;
-            case "[D":
+        else if (type.equals("[D"))
                 arr=new DoubleArrayObject(len,this.name);
-                break;
-            case "[B":
+        else if (type.equals("[B"))
                 arr=new ByteArrayObject(len,this.name);
-                break;
-            case "[S":
+        else if (type.equals("[S"))
                 arr=new ShortArrayObject(len,this.name);
-                break;
-            case "[I":
+        else if (type.equals("[I"))
                 arr=new IntArrayObject(len,this.name);
-                break;
-            case "[J":
+        else if (type.equals("[J"))
                 arr=new LongArrayObject(len,this.name);
-                break;
-            default:
+            else
                 arr=new RefArrayObject(len,this.name);
-                break;
-        }
         return arr;
     }
 
@@ -189,7 +178,6 @@ public class JClass {
      * 这个方法初始化了这个类的静态部分
      */
     public void initClass(JThread thread, JClass clazz) {
-        if (clazz.initState==InitState.SUCCESS) return;
         initStart(clazz);
         //初始化<clinit>
         Method Method_clinit=clazz.getMethodInClass("<clinit>","()V",true);
