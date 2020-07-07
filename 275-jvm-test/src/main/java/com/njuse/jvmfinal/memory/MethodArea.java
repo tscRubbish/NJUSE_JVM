@@ -14,12 +14,10 @@ public class MethodArea {
 
     private MethodArea() {
         classMap = new LinkedHashMap<>();
-        classState=new LinkedHashMap<>();
     }
 
     @Setter @Getter
     private static Map<String, JClass> classMap;
-    private static Map<String, Boolean> classState;
     public static MethodArea getInstance() {
         return methodArea;
     }
@@ -28,9 +26,6 @@ public class MethodArea {
         MethodArea.classMap = classMap;
     }
 
-    public static Map<String, Boolean> getClassState() {
-        return classState;
-    }
 
     public static Map<String, JClass> getClassMap() {
         return classMap;
@@ -45,6 +40,5 @@ public class MethodArea {
 
     public void addClass(String className, JClass clazz) {
         classMap.put(className, clazz);
-        classState.put(className, Boolean.TRUE);
     }
 }

@@ -49,7 +49,8 @@ public class Method extends ClassMember {
             switch (chars[idx++]) {
                 case 'J':
                 case 'D':
-                    cnt++;
+                    cnt+=2;
+                    break;
                     //fall through
                 case 'F':
                 case 'I':
