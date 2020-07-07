@@ -44,8 +44,8 @@ public class Vars {
      * @param value 变量的值
      */
     public void setLong(int index, long value) {
-        setInt(index,(int)(0xFFFFFFFFL&value));
-        setInt(index+1,(int)((0xFFFFFFFF00000000L&value)>>32));
+        setInt(index,(int)value);
+        setInt(index+1,(int)(value>>32));
     }
 
     /**
@@ -54,7 +54,7 @@ public class Vars {
      * @return 变量的值
      */
     public long getLong(int index) {
-        return (((long)getInt(index+1)<<32)&0xFFFFFFFF00000000L)|((long)getInt(index)&0x00000000ffffffffL);
+        return (long)getInt(index+1)<<32|(long)getInt(index)&4294967295L;
     }
 
     public void setDouble(int index, double value) {

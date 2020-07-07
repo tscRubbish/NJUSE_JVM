@@ -66,8 +66,8 @@ public class OperandStack {
      * @param value 变量的值
      */
     public void pushLong(long value) {
-        pushInt((int)(0xFFFFFFFFL&value));
-        pushInt((int)((0xFFFFFFFF00000000L&value)>>32));//超级玄学的位运算
+        pushInt((int)(value));
+        pushInt((int)(value>>32));//超级玄学的位运算
         //System.out.println("in"+top+":  "+value+" "+(int)(0xFFFFFFFFL&value)+" "+(int)((0xFFFFFFFF00000000L&value)>>32));
     }
 
@@ -79,7 +79,7 @@ public class OperandStack {
     public long popLong() {
         long l=0;
         int i1=popInt(),i2=popInt();
-        l=(((long)i1<<32)&0xFFFFFFFF00000000L)|((long)i2&0x00000000ffffffffL);//超级玄学的位运算
+        l=(long)i1<<32|(long)i2&4294967295L;//超级玄学的位运算
         //System.out.println("Out"+top+":   "+l+" "+(((long)i1<<32)&0xFFFFFFFF00000000L)+" "+((long)i2&0x00000000ffffffffL));
         return l;
     }
