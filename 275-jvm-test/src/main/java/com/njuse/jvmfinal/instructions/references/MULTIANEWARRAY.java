@@ -36,9 +36,9 @@ public class MULTIANEWARRAY extends Instruction {
         ArrayObject arr=clazz.newArrayObject(lenarr[D]);
         if (D==dimensions-1)
             return arr;
-        ArrayObject target=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
+        //ArrayObject target=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
         for (int i=0;i<lenarr[D];i++){
-            ((RefArrayObject)arr).getArray()[i]=target;
+            ((RefArrayObject)arr).getArray()[i]=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
         }
         return arr;
     }
