@@ -49,6 +49,7 @@ public class PUTSTATIC extends  Index16Instruction {
                     break;
                 case 'D':
                     staticVars.setDouble(slotID, stack.popDouble());
+                    break;
                 case 'E':
                 case 'G':
                 case 'H':

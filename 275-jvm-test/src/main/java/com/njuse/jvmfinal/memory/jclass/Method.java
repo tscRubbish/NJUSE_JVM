@@ -47,7 +47,7 @@ public class Method extends ClassMember {
          * Beware of long and double type
          */
         int len=descriptor.length(),sum=0;
-        for (int i=0;i<len;i++) {
+        for (int i=descriptor.indexOf('(');i<len;i++) {
             char ch=descriptor.charAt(i);
             switch (ch){
                 case 'J':
@@ -65,7 +65,12 @@ public class Method extends ClassMember {
                     i=len;break;
                 }
                 case '[':break;
-                default:{
+                case 'I':
+                case 'F':
+                case 'C':
+                case 'Z':
+                case 'S':
+                case 'B': {
                     sum+=1;
                     break;
                 }

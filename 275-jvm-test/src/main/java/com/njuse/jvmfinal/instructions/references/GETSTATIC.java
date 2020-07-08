@@ -55,7 +55,6 @@ public class GETSTATIC extends Index16Instruction {
                 case '[':
                     stack.pushObjectRef(staticVars.getObjectRef(slotID));
                     break;
-                default:
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
