@@ -53,7 +53,7 @@ public class ClassLoader {
         arr.setName(className);
         arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
         arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry),loadClass("java/io/Serializable", initiatingEntry)});
-        this.methodArea.addClass(className,arr);
+        this.methodArea.addClass(arr.getName(),arr);
         return arr;
     }
 
