@@ -79,9 +79,9 @@ public class OperandStack {
     public long popLong() {
         long l=0;
         int i1=popInt(),i2=popInt();
-        l=(long)i1<<32|(long)i2&4294967295L;//超级玄学的位运算
+        //l=(long)i1<<32|(long)i2&4294967295L;//超级玄学的位运算
         //System.out.println("Out"+top+":   "+l+" "+(((long)i1<<32)&0xFFFFFFFF00000000L)+" "+((long)i2&0x00000000ffffffffL));
-        return l;
+        return (long)(i1&0xFFFFFFFFL)<<32|((long)i2&0xFFFFFFFFL);
     }
 
     public void pushDouble(double value) {

@@ -33,7 +33,7 @@ public class INVOKE_VIRTUAL extends Index16Instruction {
 
         frame.getThread().pushFrame(newFrame);
 
-        checkNative(toInvoke,frame);
+        checkNative(method,frame);
     }
     private void checkNative(Method toInvoke,StackFrame frame){
         if (toInvoke.isNative()) {
