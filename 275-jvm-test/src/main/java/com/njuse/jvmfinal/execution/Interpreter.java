@@ -4,6 +4,7 @@ import com.njuse.jvmfinal.instructions.base.Instruction;
 import com.njuse.jvmfinal.memory.jclass.Method;
 import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
+import com.njuse.jvmfinal.runtime.struct.Slot;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class Interpreter {
             //System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
             //check whether there's a new frame
             //and whether there's more frame to exec
+
             StackFrame newTop = thread.getTopFrame();
 
             if (newTop == null) {

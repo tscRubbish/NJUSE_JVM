@@ -11,7 +11,7 @@ public class I2L extends NoOperandsInstruction {
      */
     @Override
     public void execute(StackFrame frame) {
-        int i=frame.getOperandStack().popInt();
-        frame.getOperandStack().pushLong((long)i);
+        long i=(long)frame.getOperandStack().popInt();
+        frame.getOperandStack().pushLong(i);
     }
 }
