@@ -29,6 +29,7 @@ public class INVOKE_VIRTUAL extends Index16Instruction {
         JObject objectRef = frame.getOperandStack().popObjectRef();
         JClass clazz = objectRef.getClazz();
         Method toInvoke = ((MethodRef) methodRef).resolveMethodRef(clazz);
+        //System.out.println(clazz.getName()+" "+toInvoke.getName());
         StackFrame newFrame = prepareNewFrame(frame, argc, argv, objectRef, toInvoke);
 
         frame.getThread().pushFrame(newFrame);

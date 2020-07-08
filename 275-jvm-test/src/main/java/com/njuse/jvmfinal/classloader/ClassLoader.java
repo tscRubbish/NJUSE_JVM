@@ -65,12 +65,12 @@ public class ClassLoader {
             //System.out.println(data.toString());
             //define class
             JClass clazz = defineClass(data, definingEntry);
+            //System.out.println(className);
             //link class
             linkClass(clazz);
 
             return clazz;
         } catch (IOException e) {
-            //System.out.println(className);
             throw new ClassNotFoundException();
         }
     }
@@ -133,7 +133,7 @@ public class ClassLoader {
         String[] interfaceNames=clazz.getInterfaceNames();
         for (int i=0;i<len;i++){
             interfaces[i]=ClassLoader.getInstance().loadClass(interfaceNames[i],clazz.getLoadEntryType());
-           // System.out.println(clazz.getName()+"'sinterface="+jc.getName());
+            //System.out.println(clazz.getName()+"'sinterface="+interfaces[i].getName());
         }
         clazz.setInterfaces(interfaces);
     }
@@ -142,7 +142,7 @@ public class ClassLoader {
      * link phase
      */
     private void linkClass(JClass clazz) {
-        verify(clazz);
+        //verify(clazz);
         prepare(clazz);
     }
 

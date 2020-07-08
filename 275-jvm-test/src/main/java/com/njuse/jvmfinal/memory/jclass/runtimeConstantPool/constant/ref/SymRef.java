@@ -22,6 +22,7 @@ public abstract class SymRef implements Constant {
 
     public void resolveClassRef() throws ClassNotFoundException {
         JClass D = runtimeConstantPool.getClazz();
+        //System.out.println(className+" "+D.getLoadEntryType().getValue());
         JClass C = ClassLoader.getInstance().loadClass(className, D.getLoadEntryType());
         if (!C.isAccessibleTo(D)) {
             try {

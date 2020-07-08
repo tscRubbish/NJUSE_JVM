@@ -59,6 +59,7 @@ public class ClassFileReader {
      */
     public Pair<byte[], Integer> readClassFile(String className, EntryType privilege) throws IOException, ClassNotFoundException {
         String realClassName = className + ".class";
+        if (privilege==null) privilege=new EntryType(EntryType.USER_ENTRY);
         this.checkAndSetDefault();
         realClassName = PathUtil.transform(realClassName);
         //todo
@@ -75,7 +76,6 @@ public class ClassFileReader {
          * Return the result once you read it.
          */
         byte[] data;
-        if (privilege==null) privilege=new EntryType(EntryType.USER_ENTRY);
         try {
             if (privilege.getValue() >= EntryType.BOOT_ENTRY) {
                 data=bootClasspath.readClass(realClassName);
@@ -97,6 +97,7 @@ public class ClassFileReader {
                 return Pair.of(data, EntryType.USER_ENTRY);
             }
         }catch (Exception e){}
+        //System.out.println(realClassName+" not found");
         throw new ClassNotFoundException();
     }
     private void checkAndSetDefault() throws FileNotFoundException {

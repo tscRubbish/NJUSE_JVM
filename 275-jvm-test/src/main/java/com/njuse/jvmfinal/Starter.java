@@ -13,11 +13,11 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 import java.io.File;
 
 public class Starter {
-    static String cp = String.join("/", "src", "test", "java");
+    static String cp = "src/test/java/";
 
     public static void main(String[] args) {
         //Starter.runTest("cases.light.LightEasyTestUtilTest", cp);
-        Starter.runTest("cases.light.ConditionTest", cp);
+        Starter.runTest("cases.medium.DarkMediumInstruction2", cp);
     }
 
     /**

@@ -26,7 +26,7 @@ public class MethodRef extends MemberRef {
      */
     public Method resolveMethodRef(JClass clazz) {
         assert clazz!=null;
-        if (this.method!=null) return method;
+        //if (this.method!=null) return method  这句语句是错误的
         for (JClass jc = clazz; jc!=null; jc=jc.getSuperClass()){
             Optional optional=jc.resolveMethod(this.name,this.descriptor);
             if (optional.isPresent()) {
@@ -47,7 +47,7 @@ public class MethodRef extends MemberRef {
         interfaces.addAll(Arrays.asList(ifs));
 
         while(!interfaces.isEmpty()) {
-            JClass clz = (JClass)interfaces.pop();
+            JClass clz = interfaces.pop();
             Optional optional= clz.resolveMethod(this.name, this.descriptor);
             if (optional.isPresent()) {
                 this.method = (Method)optional.get();
@@ -68,11 +68,11 @@ public class MethodRef extends MemberRef {
         if (this.method!=null) return method;
         try {
             this.resolveClassRef();
-            return resolveMethodRef(clazz);
+            resolveMethodRef(clazz);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return method;
+        return this.method;
     }
 
 

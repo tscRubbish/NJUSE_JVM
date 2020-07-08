@@ -19,4 +19,7 @@ public class TestUtil {
     public static boolean equalFloat(float a, float b){
 
         return true;}
+    public static boolean fail(){
+        return true;
+    }
 }
