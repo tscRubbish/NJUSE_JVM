@@ -147,10 +147,14 @@ public class ClassLoader {
     }
 
     /**
+     * todo
      * You don't need to write any code here.
      */
     private void verify(JClass clazz) {
-        //do nothing
+        //ClassChecker.checkClassFile(clazz.getClassFile());
+        ClassChecker.checkData(clazz);
+        //ClassChecker.checkByte(clazz);
+        //ClassChecker.checkReference(clazz);
     }
 
     private void prepare(JClass clazz) {

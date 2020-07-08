@@ -37,12 +37,9 @@ public class ClassFile {
     public ClassFile(byte[] classfile) {
         in = ByteBuffer.wrap(classfile);
         this.magic = in.getInt();
-        if (this.magic != 0xCAFEBABE) {
-            throw new UnsupportedOperationException(
-                    "Wrong magic number! Expect 0xCAFEBABE but actual is " + Integer.toHexString(this.magic));
-        }
         this.minorVersion = in.getShort();
         this.majorVersion = in.getShort();
+        //System.out.println(minorVersion+" "+majorVersion);
         parseConstantPool(classfile);
         this.accessFlags = in.getShort();
         this.thisClass = in.getShort();

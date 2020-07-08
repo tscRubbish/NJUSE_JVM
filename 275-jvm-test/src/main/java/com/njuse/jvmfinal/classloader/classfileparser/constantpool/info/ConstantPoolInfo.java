@@ -5,6 +5,8 @@ import com.njuse.jvmfinal.classloader.classfileparser.constantpool.ConstantPool;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.nio.ByteBuffer;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ConstantPoolInfo {
     public static final byte CLASS = 7;
@@ -23,11 +25,31 @@ public class ConstantPoolInfo {
     public static final byte INVOKE_DYNAMIC = 18;
     protected byte tag;
     protected ConstantPool myCP;
-
+    private static LinkedHashMap<Integer,String> map=new LinkedHashMap<Integer,String>();
+    static {
+        map.put(1,"UTF8");
+        map.put(3,"INTEGER");
+        map.put(4,"FLOAT");
+        map.put(5,"LONG");
+        map.put(6,"DOUBLE");
+        map.put(7,"CLASS");
+        map.put(8,"STRING");
+        map.put(9,"FIELD_REF");
+        map.put(10,"METHOD_REF");
+        map.put(11,"INTERFACE_METHOD_REF");
+        map.put(12,"NAME_AND_TYPE");
+        map.put(15,"METHOD_HANDLE");
+        map.put(16,"METHOD_TYPE");
+        map.put(18,"INVOKE_DYNAMIC");
+    }
     public ConstantPoolInfo(ConstantPool myCP) {
         this.myCP = myCP;
     }
 
+    public boolean checkFlag(int flag){
+        if (map.containsKey(flag)) return true;
+        return false;
+    }
     /**
      * return the constant pool info instance and
      * the number of bytes read by this method

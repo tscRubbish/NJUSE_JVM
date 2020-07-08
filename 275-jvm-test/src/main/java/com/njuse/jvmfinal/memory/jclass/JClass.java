@@ -35,11 +35,13 @@ public class JClass {
     private int staticSlotCount;
     private Vars staticVars; // 请自行设计数据结构
     private InitState initState; // 请自行设计初始化状态
+    private ClassFile classFile;
 
     public JClass(){}
     public JClass(ClassFile classFile) {
         this.accessFlags = classFile.getAccessFlags();
         this.name = classFile.getClassName();
+        this.classFile=classFile;
         if (!this.name.equals("java/lang/Object")) {
             // index of super class of java/lang/Object is 0
             this.superClassName = classFile.getSuperClassName();
@@ -249,6 +251,8 @@ public class JClass {
     public boolean isAccSuper() {
         return 0 != (this.accessFlags & AccessFlags.ACC_SUPER);
     }
+
+    public boolean isFinal() {return 0!=(this.accessFlags&AccessFlags.ACC_FINAL);}
 
     public boolean isArray() {
         return this.name.charAt(0) == '[';

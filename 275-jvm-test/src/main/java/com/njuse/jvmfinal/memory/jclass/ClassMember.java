@@ -37,4 +37,6 @@ public abstract class ClassMember {
     public boolean isProtected() {
         return 0 != (accessFlags & AccessFlags.ACC_PROTECTED);
     }
+
+    public boolean isAbstract() {return 0!=(accessFlags&AccessFlags.ACC_ABSTRACT);}
 }

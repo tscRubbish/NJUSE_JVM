@@ -16,8 +16,8 @@ public class Starter {
     static String cp = String.join("/", "src", "test", "java");
 
     public static void main(String[] args) {
-        //Starter.runTest("cases.light.LightEasyStaticTest", cp);
-        Starter.runTest("cases.light.Test3", cp);
+        Starter.runTest("cases.light.LightEasyTestUtilTest", cp);
+        //Starter.runTest("cases.light.Test4", cp);
     }
 
     /**
