@@ -13,6 +13,6 @@ public class I2S extends NoOperandsInstruction {
     @Override
     public void execute(StackFrame frame) {
         int s=frame.getOperandStack().popInt();;
-        frame.getOperandStack().pushInt(s&0xFFFF);
+        frame.getOperandStack().pushInt((short)s&0xFFFF);
     }
 }
