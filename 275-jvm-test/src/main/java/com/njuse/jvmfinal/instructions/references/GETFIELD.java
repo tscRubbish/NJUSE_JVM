@@ -21,9 +21,15 @@ public class GETFIELD extends Index16Instruction {
         FieldRef fr=(FieldRef) rcp.getConstant(super.index);
         try {
             Field field = fr.getResolvedFieldRef();
+            if (field.isStatic()) {
+                throw new IncompatibleClassChangeError();
+            }
             JClass target=field.getClazz();
             int SlotId=field.getSlotID();
             NonArrayObject ref=(NonArrayObject) frame.getOperandStack().popObjectRef();
+            if (ref.isNull()) {
+                throw new NullPointerException();
+            }
             Vars fields=ref.getFields();
             switch (field.getDescriptor().charAt(0)){
                 case 'I':

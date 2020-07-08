@@ -8,11 +8,11 @@ import com.njuse.jvmfinal.runtime.struct.array.IntArrayObject;
 public class CASTORE extends NoOperandsInstruction {
     @Override
     public void execute(StackFrame frame){
-        int value=frame.getOperandStack().popInt()<<23;
+        char value=(char)frame.getOperandStack().popInt();
         int index=frame.getOperandStack().popInt();
         CharArrayObject carr=(CharArrayObject) frame.getOperandStack().popObjectRef();
         if (index>=0&&index<carr.getLen()){
-            carr.getArray()[index]=(char)(value>>23&0xFF);
+            carr.getArray()[index]=value;
         }
         else throw new ArrayIndexOutOfBoundsException();
     }

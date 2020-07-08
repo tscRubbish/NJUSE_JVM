@@ -99,6 +99,7 @@ public class JClass {
     public ArrayObject newArrayObject(int len){
         ArrayObject arr;
         String type=getName();
+        //System.out.println(type);
         if (type.equals("[Z"))
                 arr=new BooleanArrayObject(len, this.name);
         else if (type.equals("[C"))

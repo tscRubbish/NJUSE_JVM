@@ -47,6 +47,7 @@ public class ClassLoader {
     }
 
     private JClass loadArrayClass(String className,EntryType initiatingEntry) throws ClassNotFoundException{
+       // System.out.println(className);
         JClass arr=new JClass();
         arr.setInitState(InitState.SUCCESS);
         arr.setAccessFlags((short)1);
@@ -54,6 +55,7 @@ public class ClassLoader {
         arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
         arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry),loadClass("java/io/Serializable", initiatingEntry)});
         this.methodArea.addClass(arr.getName(),arr);
+        //System.out.println(methodArea.findClass(arr.getName())==null);
         return arr;
     }
 
