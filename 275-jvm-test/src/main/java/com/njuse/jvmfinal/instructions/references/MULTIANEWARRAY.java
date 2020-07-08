@@ -16,7 +16,7 @@ public class MULTIANEWARRAY extends Instruction {
     @Override
     public void fetchOperands(ByteBuffer reader) {
         this.index=(int)reader.getShort()&'\uffff';
-        this.dimensions=(int)reader.get()&255;
+        this.dimensions=reader.get()&255;
     }
 
     @Override

@@ -34,10 +34,10 @@ public class NEWARRAY extends Index8Instruction {
                     clazz = classLoader.loadClass("[C", en);
                     break;
                 case 6:
-                    clazz = classLoader.loadClass("[F", en);
+                    clazz = classLoader.loadClass("F", en);
                     break;
                 case 7:
-                    clazz = classLoader.loadClass("[D", en);
+                    clazz = classLoader.loadClass("D", en);
                     break;
                 case 8:
                     clazz = classLoader.loadClass("[B", en);
