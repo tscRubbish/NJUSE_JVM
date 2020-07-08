@@ -22,20 +22,12 @@ public class MethodArea {
         return methodArea;
     }
 
-    public static void setClassMap(Map<String, JClass> classMap) {
-        MethodArea.classMap = classMap;
-    }
-
-
     public static Map<String, JClass> getClassMap() {
         return classMap;
     }
     public JClass findClass(String className) {
-        if (classMap.keySet().stream().anyMatch(name -> name.equals(className))) {
-            return classMap.get(className);
-        } else {
-            return null;
-        }
+        if (classMap.containsKey(className)) return classMap.get(className);
+        return null;
     }
 
     public void addClass(String className, JClass clazz) {

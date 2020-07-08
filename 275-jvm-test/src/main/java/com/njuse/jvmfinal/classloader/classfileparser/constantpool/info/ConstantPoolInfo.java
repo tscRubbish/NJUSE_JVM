@@ -2,12 +2,15 @@ package com.njuse.jvmfinal.classloader.classfileparser.constantpool.info;
 
 import com.njuse.jvmfinal.classloader.classfileparser.BuildUtil;
 import com.njuse.jvmfinal.classloader.classfileparser.constantpool.ConstantPool;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.nio.ByteBuffer;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+@Getter
+@Setter
 public class ConstantPoolInfo {
     public static final byte CLASS = 7;
     public static final byte FIELD_REF = 9;

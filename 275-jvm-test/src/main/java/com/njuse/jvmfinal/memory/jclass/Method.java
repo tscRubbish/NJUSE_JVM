@@ -6,6 +6,7 @@ import com.njuse.jvmfinal.execution.Decoder;
 import com.njuse.jvmfinal.instructions.base.Instruction;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Method extends ClassMember {
     private int maxLocal;
     private int argc;
     private byte[] code;
-    private ArrayList<String> instList;
+    private ArrayList<Pair<Instruction,Integer>> instList;
     boolean parsed = false;
 
     public Method(MethodInfo info, JClass clazz) {
@@ -76,6 +77,7 @@ public class Method extends ClassMember {
         return sum;
     }
     public void parseCode() {
+        if (this.code==null) return;
         ByteBuffer codeReader = ByteBuffer.wrap(this.code);
         int position = 0;
         codeReader.position(position);
@@ -85,7 +87,8 @@ public class Method extends ClassMember {
             int opcode = codeReader.get() & 255;
             Instruction instruction = Decoder.decode(opcode);
             instruction.fetchOperands(codeReader);
-            this.instList.add(position + " " + instruction.toString());
+            this.instList.add(Pair.of(instruction,codeReader.position()));
+            //this.instList.add(position + " " + instruction.toString());
             //System.out.println(getName()+":"+instruction.toString()+" "+codeReader.position());
         }
 

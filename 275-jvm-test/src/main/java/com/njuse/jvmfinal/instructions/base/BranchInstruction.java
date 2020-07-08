@@ -1,7 +1,9 @@
 package com.njuse.jvmfinal.instructions.base;
 
-import java.nio.ByteBuffer;
+import lombok.Getter;
 
+import java.nio.ByteBuffer;
+@Getter
 public abstract class BranchInstruction extends Instruction {
     protected int offset;//type of offset is signed short
 
