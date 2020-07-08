@@ -67,7 +67,7 @@ public class OperandStack {
      */
     public void pushLong(long value) {
         pushInt((int)(value));
-        pushInt((int)(value>>32));//超级玄学的位运算
+        pushInt((int)(value>>>32));//超级玄学的位运算
         //System.out.println("in"+top+":  "+value+" "+(int)(0xFFFFFFFFL&value)+" "+(int)((0xFFFFFFFF00000000L&value)>>32));
     }
 

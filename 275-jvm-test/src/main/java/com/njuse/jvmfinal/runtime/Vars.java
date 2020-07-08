@@ -45,7 +45,7 @@ public class Vars {
      */
     public void setLong(int index, long value) {
         setInt(index,(int)value);
-        setInt(index+1,(int)(value>>32));
+        setInt(index+1,(int)(value>>>32));
     }
 
     /**
