@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.nio.ByteBuffer;
 @Getter
 public abstract class BranchInstruction extends Instruction {
-    protected int offset;//type of offset is signed short
+    protected short offset;//type of offset is signed short
 
     public void fetchOperands(ByteBuffer reader) {
         offset = reader.getShort();

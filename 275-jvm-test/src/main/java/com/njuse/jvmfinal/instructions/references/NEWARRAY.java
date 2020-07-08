@@ -9,7 +9,15 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.struct.ArrayObject;
 import com.njuse.jvmfinal.runtime.struct.array.ArrayType;
 
+import java.nio.ByteBuffer;
+
 public class NEWARRAY extends Index8Instruction {
+
+    @Override
+    public void fetchOperands(ByteBuffer reader) {
+        index=reader.get()&0xFF;
+    }
+
     @Override
     public void execute(StackFrame frame) {
         int len=frame.getOperandStack().popInt();
