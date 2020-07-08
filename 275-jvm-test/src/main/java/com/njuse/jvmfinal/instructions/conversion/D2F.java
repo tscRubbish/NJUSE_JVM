@@ -7,7 +7,7 @@ import com.njuse.jvmfinal.runtime.StackFrame;
 public class D2F extends NoOperandsInstruction {
     public void execute(StackFrame frame) {
         OperandStack stack = frame.getOperandStack();
-        float f = (float) stack.popDouble();
+        float f = (float) stack.popFloat();
         stack.pushFloat(f);
     }
 }
