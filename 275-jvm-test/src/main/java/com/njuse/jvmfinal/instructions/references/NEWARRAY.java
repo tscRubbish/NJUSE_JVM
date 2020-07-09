@@ -21,7 +21,7 @@ public class NEWARRAY extends Index8Instruction {
     @Override
     public void execute(StackFrame frame) {
         int len=frame.getOperandStack().popInt();
-        JClass clazz;
+        JClass clazz=null;
         String type= ArrayType.getName(index);
         ClassLoader classLoader=ClassLoader.getInstance();
         EntryType en=frame.getMethod().getClazz().getLoadEntryType();
@@ -51,13 +51,14 @@ public class NEWARRAY extends Index8Instruction {
                 case 11:
                     clazz = classLoader.loadClass("[J", en);
                     break;
-                default:
-                    throw new RuntimeException();
             }
-            ArrayObject arr=clazz.newArrayObject(len);
-            JHeap.getInstance().addObj(arr);
-            frame.getOperandStack().pushObjectRef(arr);
-        }catch (ClassNotFoundException e){e.printStackTrace();}
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        if (clazz==null) throw new RuntimeException();
+        ArrayObject arr=clazz.newArrayObject(len);
+        JHeap.getInstance().addObj(arr);
+        frame.getOperandStack().pushObjectRef(arr);
 
     }
 }
