@@ -21,6 +21,6 @@ public class INSTANCEOF extends Index16Instruction {
             if (ref.getClazz().isAssignableFrom(clazz))
                 frame.getOperandStack().pushInt(1);
             else frame.getOperandStack().pushInt(0);
-        }catch (ClassNotFoundException e){e.printStackTrace();}
+        }catch (ClassNotFoundException e){e.printStackTrace();}//异常种类注意是ClassNotFountException
     }
 }

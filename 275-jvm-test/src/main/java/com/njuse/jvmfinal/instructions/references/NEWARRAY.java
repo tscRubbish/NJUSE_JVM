@@ -3,6 +3,7 @@ package com.njuse.jvmfinal.instructions.references;
 import com.njuse.jvmfinal.classloader.ClassLoader;
 import com.njuse.jvmfinal.classloader.classfilereader.classpath.EntryType;
 import com.njuse.jvmfinal.instructions.base.Index8Instruction;
+import com.njuse.jvmfinal.instructions.base.Instruction;
 import com.njuse.jvmfinal.memory.JHeap;
 import com.njuse.jvmfinal.memory.jclass.JClass;
 import com.njuse.jvmfinal.runtime.StackFrame;
@@ -11,8 +12,8 @@ import com.njuse.jvmfinal.runtime.struct.array.ArrayType;
 
 import java.nio.ByteBuffer;
 
-public class NEWARRAY extends Index8Instruction {
-
+public class NEWARRAY extends Instruction {
+    private int index;
     @Override
     public void fetchOperands(ByteBuffer reader) {
         index=reader.get()&0xFF;
