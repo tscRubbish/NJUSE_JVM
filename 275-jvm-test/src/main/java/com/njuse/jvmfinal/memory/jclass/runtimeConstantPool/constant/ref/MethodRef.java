@@ -64,11 +64,11 @@ public class MethodRef extends MemberRef {
      * 与上面的动态查找相比，这里的查找始终是从这个Ref对应的class开始查找的
      */
     public Method resolveMethodRef() {
-        //if (this.method!=null) return method;
+        if (this.method!=null) return method;
         try {
             this.resolveClassRef();
             resolveMethodRef(clazz);
-        }catch (Exception e){
+        }catch (ClassNotFoundException e){
             e.printStackTrace();
         }
         return this.method;
