@@ -283,36 +283,33 @@ public class JClass {
         JClass s = other;
         JClass t = this;
         if (s == t) return true;
-        if (t.isSubClassOf(s)) return true;
-        if (t.isImplementOf(s)) return true;
-        return false;
-//        if (!s.isArray()) {
-//            if (!s.isInterface()) {
-//                if (!t.isInterface()) {
-//                    return s.isSubClassOf(t);
-//                } else {
-//                    return s.isImplementOf(t);
-//                }
-//            } else {
-//                if (!t.isInterface()) {
-//                    return t.isJObjectClass();
-//                } else {
-//                    return t.isSuperInterfaceOf(s);
-//                }
-//            }
-//        } else {
-//            if (!t.isArray()) {
-//                if (!t.isInterface()) {
-//                    return t.isJObjectClass();
-//                } else {
-//                    return t.isJIOSerializable() || t.isJlCloneable();
-//                }
-//            } else {
-//                JClass sc = s.getComponentClass();
-//                JClass tc = t.getComponentClass();
-//                return sc == tc || t.isJIOSerializable();
-//            }
-//        }
+        if (!s.isArray()) {
+            if (!s.isInterface()) {
+                if (!t.isInterface()) {
+                    return s.isSubClassOf(t);
+                } else {
+                    return s.isImplementOf(t);
+                }
+            } else {
+                if (!t.isInterface()) {
+                    return t.isJObjectClass();
+                } else {
+                    return t.isSuperInterfaceOf(s);
+                }
+            }
+        } else {
+            if (!t.isArray()) {
+                if (!t.isInterface()) {
+                    return t.isJObjectClass();
+                } else {
+                    return t.isJIOSerializable() || t.isJlCloneable();
+                }
+            } else {
+                JClass sc = s.getComponentClass();
+                JClass tc = t.getComponentClass();
+                return sc == tc || t.isJIOSerializable();
+            }
+        }
     }
 
     private boolean isSubClassOf(JClass otherClass) {

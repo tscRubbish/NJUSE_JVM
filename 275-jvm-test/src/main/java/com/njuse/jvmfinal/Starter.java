@@ -43,11 +43,7 @@ public class Starter {
                     jThread.pushFrame(stackFrame);
                 }
             }*/
-            try{
-                PrintWriter pw=new PrintWriter(new File("src/test/java/"+mainClassName+".txt"));
-                Interpreter.interpret(jThread,pw);
-                pw.close();
-            }catch (IOException e){}
+            Interpreter.interpret(jThread);
         } catch (ClassNotFoundException cfe) {
             cfe.printStackTrace();
         }

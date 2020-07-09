@@ -55,7 +55,9 @@ public class ClassLoader {
         this.methodArea.addClass(arr.getName(),arr);
         try {
             arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
+            arr.setSuperClassName("java/lang/Object");
             arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry), loadClass("java/io/Serializable", initiatingEntry)});
+            arr.setInterfaceNames(new String[]{"java/lang/Cloneable","java/io/Serializable"});
             //System.out.println(methodArea.findClass(arr.getName())==null);
         }catch (ClassNotFoundException e){
             e.printStackTrace();

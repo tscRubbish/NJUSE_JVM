@@ -13,10 +13,8 @@ import java.util.ArrayList;
 
 public class Interpreter {
     private static ByteBuffer codeReader;
-    private static PrintWriter pw;
 
-    public static void interpret(JThread thread,PrintWriter p) {
-        pw=p;
+    public static void interpret(JThread thread) {
         initCodeReader(thread);
         loop(thread);
         return;
@@ -52,10 +50,7 @@ public class Interpreter {
             int nextPC = codeReader.position();
             oriTop.setNextPC(nextPC);
             instruction.execute(oriTop);
-            try{
-                pw.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
-            }catch (Exception e){}
- //          System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
+           //System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
 //            System.out.println(thread.getTopFrame().getMethod().getName()+" "+thread.getTopFrame().getOperandStack().getTop());
             //check whether there's a new frame
             //and whether there's more frame to exec
