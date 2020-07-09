@@ -123,6 +123,7 @@ public class ClassLoader {
          * Use the load entry(defining entry) as initiating entry of super class
          */
         if (clazz.getSuperClassName().equals("")) return;
+        if (clazz.getName().equals("java/lang/Object")) return;
         //System.out.println(clazz.getName()+"'s  father="+clazz.getSuperClassName());
         clazz.setSuperClass(loadClass(clazz.getSuperClassName(),clazz.getLoadEntryType()));
     }
@@ -137,7 +138,7 @@ public class ClassLoader {
          *
          * Use the load entry(defining entry) as initiating entry of interfaces
          */
-        int cnt=0,len=clazz.getInterfaceNames().length;
+        int len=clazz.getInterfaceNames().length;
         JClass[] interfaces=new JClass[len];
         String[] interfaceNames=clazz.getInterfaceNames();
         for (int i=0;i<len;i++){
@@ -260,9 +261,6 @@ public class ClassLoader {
                 break;
             case 'J':
                 vars.setLong(sid,0L);
-                break;
-            case 'L':
-                vars.setObjectRef(sid,new NullObject());
                 break;
             default:
                 vars.setObjectRef(sid,new NullObject());
