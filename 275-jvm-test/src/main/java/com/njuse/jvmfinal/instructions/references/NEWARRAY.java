@@ -62,4 +62,5 @@ public class NEWARRAY extends Instruction {
         frame.getOperandStack().pushObjectRef(arr);
 
     }
+    public String toString(){return "NewArray "+index;}
 }

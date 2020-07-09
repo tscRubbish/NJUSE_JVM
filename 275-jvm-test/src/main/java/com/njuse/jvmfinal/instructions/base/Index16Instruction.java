@@ -7,6 +7,7 @@ public abstract class Index16Instruction extends Instruction {
 
     public void fetchOperands(ByteBuffer reader) {
         index = (int) reader.getShort() & 0xFFFF;
+        if (index<0) throw new RuntimeException("Wrong index");
     }
 
     public String toString() {

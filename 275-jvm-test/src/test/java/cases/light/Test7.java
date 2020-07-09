@@ -8,6 +8,9 @@ public class Test7 {
     static {
         a=new int[2][2][2];
     }
+    int func(Test7[][][] t,int i,int j,int k){
+        return t[i][j][k].x+i+j+k;
+    }
     public static void main(String[] args) {
         Test7[][][] a2=new Test7[2][2][2];
         for (int i=0;i<2;i++){
@@ -16,7 +19,8 @@ public class Test7 {
                     a2[i][j][k]=new Test7();
                     a2[i][j][k].x=i+j+k;
                     a[i][j][k]=a2[i][j][k].x;
-                    if (i+j+k==2) TestUtil.reach(i);
+                    if (i==0&&j==1&&k==1)
+                    TestUtil.reach(a2[i][j][k].func(a2,i,j,k));
                 }
             }
         }
