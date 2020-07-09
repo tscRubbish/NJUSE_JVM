@@ -56,7 +56,7 @@ public class PUTFIELD extends Index16Instruction {
                     ((NonArrayObject)jObject).getFields().setObjectRef(SlotId,(JObject) value);
                     break;
             }
-        }catch (Exception e){}
+        }catch (ClassNotFoundException e){e.printStackTrace();}
     }
 
 }

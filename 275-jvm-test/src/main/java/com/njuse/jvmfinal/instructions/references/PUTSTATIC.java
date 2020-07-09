@@ -78,7 +78,8 @@ public class PUTSTATIC extends  Index16Instruction {
                 case '[':
                     staticVars.setObjectRef(slotID, stack.popObjectRef());
             }
-        } catch (ClassNotFoundException cnfe) {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

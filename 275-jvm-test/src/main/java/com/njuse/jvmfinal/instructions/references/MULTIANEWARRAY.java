@@ -30,7 +30,7 @@ public class MULTIANEWARRAY extends Instruction {
             ArrayObject arr=getMutiArray(0,clazz,lenarr);
             JHeap.getInstance().addObj(arr);
             frame.getOperandStack().pushObjectRef(arr);
-        }catch (ClassNotFoundException e){}
+        }catch (ClassNotFoundException e){e.printStackTrace();}
     }
     ArrayObject getMutiArray(int D,JClass clazz,int[] lenarr){
         ArrayObject arr=clazz.newArrayObject(lenarr[D]);

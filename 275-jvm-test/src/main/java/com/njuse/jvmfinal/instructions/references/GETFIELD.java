@@ -53,6 +53,6 @@ public class GETFIELD extends Index16Instruction {
                     frame.getOperandStack().pushObjectRef(fields.getObjectRef(SlotId));
                     break;
             }
-        }catch (Exception e){}
+        }catch (ClassNotFoundException e){e.printStackTrace();}
     }
 }

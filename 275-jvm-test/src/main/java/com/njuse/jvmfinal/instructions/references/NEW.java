@@ -29,8 +29,8 @@ public class NEW extends Index16Instruction {
             NonArrayObject ref=clazz.newObject();
             JHeap.getInstance().addObj(ref);
             frame.getOperandStack().pushObjectRef(ref);
-        }catch (Exception e){
-            System.out.println(cr.getClassName());
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
         }
     }
 }

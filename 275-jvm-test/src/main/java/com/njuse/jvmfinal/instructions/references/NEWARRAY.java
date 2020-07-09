@@ -57,7 +57,7 @@ public class NEWARRAY extends Index8Instruction {
             ArrayObject arr=clazz.newArrayObject(len);
             JHeap.getInstance().addObj(arr);
             frame.getOperandStack().pushObjectRef(arr);
-        }catch (ClassNotFoundException e){}
+        }catch (ClassNotFoundException e){e.printStackTrace();}
 
     }
 }
