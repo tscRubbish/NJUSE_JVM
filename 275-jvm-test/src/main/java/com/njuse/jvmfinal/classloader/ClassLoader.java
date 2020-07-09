@@ -52,10 +52,14 @@ public class ClassLoader {
         arr.setInitState(InitState.SUCCESS);
         arr.setAccessFlags((short)1);
         arr.setName(className);
-        arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
-        arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry),loadClass("java/io/Serializable", initiatingEntry)});
         this.methodArea.addClass(arr.getName(),arr);
-        //System.out.println(methodArea.findClass(arr.getName())==null);
+        try {
+            arr.setSuperClass(loadClass("java/lang/Object", initiatingEntry));
+            arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry), loadClass("java/io/Serializable", initiatingEntry)});
+            //System.out.println(methodArea.findClass(arr.getName())==null);
+        }catch (ClassNotFoundException e){
+            System.out.println(className);
+        }
         return arr;
     }
 
@@ -98,7 +102,7 @@ public class ClassLoader {
          * add to method area
          */
         clazz.setLoadEntryType(definingEntry);
-        resolveSuperClass(clazz,definingEntry);
+        resolveSuperClass(clazz);
         resolveInterfaces(clazz);
         methodArea.addClass(clazz.getName(),clazz);
         //System.out.println(MethodArea.getClassMap().keySet());
@@ -108,7 +112,7 @@ public class ClassLoader {
     /**
      * load superclass before add to method area
      */
-    private void resolveSuperClass(JClass clazz,EntryType definingEntry) throws ClassNotFoundException {
+    private void resolveSuperClass(JClass clazz) throws ClassNotFoundException {
         //todo
         /**
          * Add some codes here.

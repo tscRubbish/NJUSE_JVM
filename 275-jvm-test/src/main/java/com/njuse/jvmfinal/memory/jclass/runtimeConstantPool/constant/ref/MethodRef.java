@@ -34,7 +34,6 @@ public class MethodRef extends MemberRef {
                 return method;
             }
         }
-        if (clazz.getInterfaces()==null) return this.method;
 //        for (JClass jc:clazz.getInterfaces()){
 //            Optional optional=jc.resolveMethod(this.name,this.descriptor);
 //            if (optional.isPresent()) {
