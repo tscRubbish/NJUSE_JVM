@@ -5,6 +5,7 @@ import com.njuse.jvmfinal.memory.JHeap;
 import com.njuse.jvmfinal.memory.jclass.JClass;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.RuntimeConstantPool;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.constant.ref.ClassRef;
+import com.njuse.jvmfinal.runtime.OperandStack;
 import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.struct.ArrayObject;
 import com.njuse.jvmfinal.runtime.struct.array.RefArrayObject;
@@ -12,35 +13,63 @@ import com.njuse.jvmfinal.runtime.struct.array.RefArrayObject;
 import java.nio.ByteBuffer;
 
 public class MULTIANEWARRAY extends Instruction {
-    private int index,dimensions;
-    @Override
-    public void fetchOperands(ByteBuffer reader) {
-        this.index=(int)reader.getShort()&'\uffff';
-        this.dimensions=reader.get()&255;
+    private int index;
+    private int dimensions;
+
+    public MULTIANEWARRAY() {
     }
 
-    @Override
-    public void execute(StackFrame frame) {
-        RuntimeConstantPool rcp=frame.getMethod().getClazz().getRuntimeConstantPool();
-        try {
-            JClass clazz = ((ClassRef) rcp.getConstant(index)).getResolvedClass();
-            int[] lenarr=new int[dimensions];
-            for (int i=dimensions-1;i>=0;i--)
-                lenarr[i]=frame.getOperandStack().popInt();
-            ArrayObject arr=getMutiArray(0,clazz,lenarr);
-            JHeap.getInstance().addObj(arr);
-            frame.getOperandStack().pushObjectRef(arr);
-        }catch (ClassNotFoundException e){e.printStackTrace();}
+    public void fetchOperands(ByteBuffer reader) {
+        this.index = reader.getShort() & '\uffff';
+        this.dimensions = reader.get() & 255;
     }
-    ArrayObject getMutiArray(int D,JClass clazz,int[] lenarr){
-        ArrayObject arr=clazz.newArrayObject(lenarr[D]);
-        if (D>=dimensions-1)
-            return arr;
-        //ArrayObject target=getMutiArray(D+1,clazz.getComponentClass(),lenarr);
-        for (int i=0;i<lenarr[D];i++){
-            ((RefArrayObject)arr).getArray()[i]=getMutiArray(D+1,clazz.getComponentClass(),lenarr);//必须分别调用方法
-            //否则每一项指向的对象相同
+
+    public void execute(StackFrame frame) {
+        RuntimeConstantPool runtimeConstantPool = frame.getMethod().getClazz().getRuntimeConstantPool();
+        ClassRef classRef = (ClassRef)runtimeConstantPool.getConstant(this.index);
+
+        try {
+            JClass arrClass = classRef.getResolvedClass();
+            OperandStack stack = frame.getOperandStack();
+            int[] lenArr = this.popAndCheck(stack, this.dimensions);
+            ArrayObject ref = this.createMultiDimensionArray(0, lenArr, arrClass);
+            JHeap.getInstance().addObj(ref);
+            stack.pushObjectRef(ref);
+        } catch (ClassNotFoundException var8) {
+            var8.printStackTrace();
         }
+
+    }
+
+    private int[] popAndCheck(OperandStack stack, int dimensions) {
+        int[] lenArr = new int[dimensions];
+
+        for(int i = dimensions - 1; i >= 0; --i) {
+            lenArr[i] = stack.popInt();
+            if (lenArr[i] < 0) {
+                throw new NegativeArraySizeException();
+            }
+        }
+
+        return lenArr;
+    }
+
+    private ArrayObject createMultiDimensionArray(int index, int[] lenArray, JClass arrClass) {
+        int len = lenArray[index];
+        ++index;
+        ArrayObject arr = arrClass.newArrayObject(len);
+        if (index <= lenArray.length - 1) {
+            assert arr instanceof RefArrayObject;
+
+            for(int i = 0; i < arr.getLen(); ++i) {
+                ((RefArrayObject)arr).getArray()[i] = this.createMultiDimensionArray(index, lenArray, arrClass.getComponentClass());
+            }
+        }
+
         return arr;
+    }
+
+    public String toString() {
+        return this.getClass().getSimpleName() + " index : " + this.index + "dimension : " + this.dimensions;
     }
 }
