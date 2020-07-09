@@ -4,34 +4,25 @@ import com.njuse.jvmfinal.instructions.base.Index16Instruction;
 import com.njuse.jvmfinal.memory.jclass.JClass;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.RuntimeConstantPool;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.constant.ref.ClassRef;
-import com.njuse.jvmfinal.runtime.OperandStack;
 import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.struct.JObject;
 
 public class INSTANCEOF extends Index16Instruction {
-    public INSTANCEOF() {
-    }
-
+    @Override
     public void execute(StackFrame frame) {
-        OperandStack stack = frame.getOperandStack();
-        JObject ref = stack.popObjectRef();
+        JObject ref=frame.getOperandStack().popObjectRef();
         if (ref.isNull()) {
-            stack.pushInt(0);
-        } else {
-            RuntimeConstantPool runtimeConstantPool = frame.getMethod().getClazz().getRuntimeConstantPool();
-            ClassRef classRef = (ClassRef)runtimeConstantPool.getConstant(this.index);
-
-            try {
-                JClass clazz = classRef.getResolvedClass();
-                if (ref.isInstanceOf(clazz)) {
-                    stack.pushInt(1);
-                } else {
-                    stack.pushInt(0);
-                }
-            } catch (ClassNotFoundException var7) {
-                var7.printStackTrace();
-            }
-
+            frame.getOperandStack().pushInt(0);
+            return;
         }
+        RuntimeConstantPool rcp=frame.getMethod().getClazz().getRuntimeConstantPool();
+        try{
+            JClass clazz=((ClassRef)rcp.getConstant(index)).getResolvedClass();
+            //System.out.println("Super= "+ref.getClazz().getSuperClass().getName());
+            //System.out.println(ref.getClazz().getName()+" "+ref.getClazz().isAssignableFrom(clazz));
+            if (ref.getClazz().isAssignableFrom(clazz))
+                frame.getOperandStack().pushInt(1);
+            else frame.getOperandStack().pushInt(0);
+        }catch (ClassNotFoundException e){e.printStackTrace();}//异常种类注意是ClassNotFountException
     }
 }

@@ -54,7 +54,7 @@ public class Vars {
      * @return 变量的值
      */
     public long getLong(int index) {
-        return (long)(getInt(index+1)&0xFFFFFFFFL)<<32|((long)getInt(index)&0xFFFFFFFFL);
+        return (long)getInt(index+1) << 32 | (long)getInt(index) & 4294967295L;
     }
 
     public void setDouble(int index, double value) {
