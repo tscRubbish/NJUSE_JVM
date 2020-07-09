@@ -46,7 +46,7 @@ public class ClassLoader {
         return ret;
     }
 
-    private JClass loadArrayClass(String className,EntryType initiatingEntry) throws ClassNotFoundException{
+    private JClass loadArrayClass(String className,EntryType initiatingEntry){
        // System.out.println(className);
         JClass arr=new JClass();
         arr.setInitState(InitState.SUCCESS);
