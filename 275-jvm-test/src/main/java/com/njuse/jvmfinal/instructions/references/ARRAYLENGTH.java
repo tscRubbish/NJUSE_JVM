@@ -8,6 +8,7 @@ public class ARRAYLENGTH extends NoOperandsInstruction {
     @Override
     public void execute(StackFrame frame) {
         ArrayObject arr=(ArrayObject) frame.getOperandStack().popObjectRef();
+        if (arr==null||arr.isNull()) throw new NullPointerException();
         frame.getOperandStack().pushInt(arr.getLen());
     }
 }

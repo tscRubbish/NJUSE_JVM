@@ -25,5 +25,7 @@ public class Test4 {
                 TestUtil.reach(a2[i][j].x);
             }
         }
+        if (a2 instanceof Test4[][]) TestUtil.reach(1);
+        else TestUtil.reach(0);
     }
 }
