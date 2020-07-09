@@ -11,6 +11,7 @@ import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Starter {
@@ -43,10 +44,10 @@ public class Starter {
                 }
             }*/
             try{
-                PrintWriter pw=new PrintWriter(new File("src/test/java/test.txt"));
+                PrintWriter pw=new PrintWriter(new File("src/test/java/"+mainClassName+".txt"));
                 Interpreter.interpret(jThread,pw);
                 pw.close();
-            }catch (Exception e){}
+            }catch (IOException e){}
         } catch (ClassNotFoundException cfe) {
             cfe.printStackTrace();
         }
