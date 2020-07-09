@@ -12,7 +12,7 @@ public class Test6 {
                 }
             }
         }
-        if (a instanceof Cloneable){
+        if (a instanceof java.lang.Cloneable){
             TestUtil.reach(a[0][1][2]);
         }
     }

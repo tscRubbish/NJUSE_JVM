@@ -7,7 +7,7 @@ public class LCONST_N extends NoOperandsInstruction {
     private long val;
     private static long[] valid = new long[]{0L, 1L};
 
-    public LCONST_N(int val) {
+    public LCONST_N(long val) {
         if ((long)val >= valid[0] && (long)val <= valid[valid.length - 1]) {
             this.val = (long)val;
         } else {
