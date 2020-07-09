@@ -17,9 +17,9 @@ public class CompositeEntry extends Entry{
         String[] list=classpath.split(PATH_SEPARATOR);
         for (String path:list){
             Entry en= ClassFileReader.chooseEntryType(path);
-            try{
-                return en.readClass(className);
-            }catch(Exception e){}
+            byte[] ret=en.readClass(className);
+            if (ret!=null)
+            return ret;
         }
         throw new IOException();
     }

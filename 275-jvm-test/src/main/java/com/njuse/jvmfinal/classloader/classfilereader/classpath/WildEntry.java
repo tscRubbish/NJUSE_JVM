@@ -20,12 +20,11 @@ public class WildEntry extends Entry{
         //System.out.println(classpath);
         //System.out.println(className);
         File f=new File(IOUtil.transform(classpath));
-        try{
-            String Path="";
-            for (String x:f.list()) Path+=classpath+x+PATH_SEPARATOR;
-            CompositeEntry entry=new CompositeEntry(Path);
-            return entry.readClass(className);
-        }catch (Exception e){}
+        String Path="";
+        for (String x:f.list()) Path+=classpath+x+PATH_SEPARATOR;
+        CompositeEntry entry=new CompositeEntry(Path);
+        byte[] ret=entry.readClass(className);
+        if (ret!=null) return ret;
         throw new IOException();
     }
 }
