@@ -17,6 +17,7 @@ import com.njuse.jvmfinal.instructions.math.shift.ISHL;
 import com.njuse.jvmfinal.instructions.math.shift.ISHR;
 import com.njuse.jvmfinal.instructions.references.*;
 import com.njuse.jvmfinal.instructions.stack.DUP;
+import com.njuse.jvmfinal.instructions.stack.DUP2;
 import com.njuse.jvmfinal.instructions.stack.POP;
 import com.njuse.jvmfinal.instructions.store.*;
 import com.njuse.jvmfinal.instructions.control.LRETURN;
@@ -57,6 +58,7 @@ public class Decoder {
         opMap.put(OpCode.POP, new POP());
 //        opMap.put(OpCode.POP2, new POP2());
         opMap.put(OpCode.DUP, new DUP());
+        opMap.put(OpCode.DUP2,new DUP2());
 
         opMap.put(OpCode.IADD,new IADD());
         opMap.put(OpCode.IDIV,new IDIV());
@@ -67,6 +69,7 @@ public class Decoder {
         opMap.put(OpCode.IXOR,new IXOR());
         opMap.put(OpCode.IOR,new IOR());
         opMap.put(OpCode.INEG,new INEG());
+        opMap.put(OpCode.IREM,new IREM());
         opMap.put(OpCode.LADD,new LADD());
         opMap.put(OpCode.LAND,new LAND());
         opMap.put(OpCode.LXOR,new LXOR());

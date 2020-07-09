@@ -181,7 +181,7 @@ public class JClass {
      * 这个方法初始化了这个类的静态部分
      */
     public void initClass(JThread thread, JClass clazz) {
-        if (clazz.getInitState()==InitState.SUCCESS.SUCCESS) return;
+        if (clazz.getInitState()==InitState.SUCCESS) return;
         initStart(clazz);
         //初始化<clinit>
         Method Method_clinit=clazz.getMethodInClass("<clinit>","()V",true);
