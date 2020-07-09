@@ -58,7 +58,7 @@ public class ClassLoader {
             arr.setInterfaces(new JClass[]{loadClass("java/lang/Cloneable", initiatingEntry), loadClass("java/io/Serializable", initiatingEntry)});
             //System.out.println(methodArea.findClass(arr.getName())==null);
         }catch (ClassNotFoundException e){
-            System.out.println(className);
+            e.printStackTrace();
         }
         return arr;
     }
@@ -77,6 +77,7 @@ public class ClassLoader {
 
             return clazz;
         } catch (IOException e) {
+            e.printStackTrace();
             throw new ClassNotFoundException();
         }
     }

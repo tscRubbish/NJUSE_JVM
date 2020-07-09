@@ -101,23 +101,23 @@ public class JClass {
         String type=getName();
         //System.out.println(type);
         if (type.equals("[Z"))
-                arr=new BooleanArrayObject(len, this.name);
+                arr=new BooleanArrayObject(len, this.name,this);
         else if (type.equals("[C"))
-                arr=new CharArrayObject(len,this.name);
+                arr=new CharArrayObject(len,this.name,this);
         else if (type.equals("[F"))
-                arr=new FloatArrayObject(len,this.name);
+                arr=new FloatArrayObject(len,this.name,this);
         else if (type.equals("[D"))
-                arr=new DoubleArrayObject(len,this.name);
+                arr=new DoubleArrayObject(len,this.name,this);
         else if (type.equals("[B"))
-                arr=new ByteArrayObject(len,this.name);
+                arr=new ByteArrayObject(len,this.name,this);
         else if (type.equals("[S"))
-                arr=new ShortArrayObject(len,this.name);
+                arr=new ShortArrayObject(len,this.name,this);
         else if (type.equals("[I"))
-                arr=new IntArrayObject(len,this.name);
+                arr=new IntArrayObject(len,this.name,this);
         else if (type.equals("[J"))
-                arr=new LongArrayObject(len,this.name);
+                arr=new LongArrayObject(len,this.name,this);
             else
-                arr=new RefArrayObject(len,this.name);
+                arr=new RefArrayObject(len,this.name,this);
         return arr;
     }
 

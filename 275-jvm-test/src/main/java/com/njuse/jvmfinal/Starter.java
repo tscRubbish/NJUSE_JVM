@@ -23,7 +23,7 @@ public class Starter {
     /**
      * ⚠️警告：不要改动这个方法签名，这是和测试用例的唯一接口
      */
-    public static void runTest(String mainClassName, String cp) throws RuntimeException {
+    public static void runTest(String mainClassName, String cp) {
         ClassLoader classLoader = ClassLoader.getInstance();
         ClassFileReader.setUserClasspath(cp);
         try {
@@ -44,7 +44,7 @@ public class Starter {
 
             Interpreter.interpret(jThread);
         } catch (ClassNotFoundException cfe) {
-            throw new RuntimeException();
+            cfe.printStackTrace();
         }
     }
 }

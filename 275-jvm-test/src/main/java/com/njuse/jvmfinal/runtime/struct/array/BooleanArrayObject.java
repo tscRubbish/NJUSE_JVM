@@ -1,6 +1,7 @@
 package com.njuse.jvmfinal.runtime.struct.array;
 
 
+import com.njuse.jvmfinal.memory.jclass.JClass;
 import com.njuse.jvmfinal.runtime.struct.ArrayObject;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +11,8 @@ import lombok.Setter;
 public class BooleanArrayObject extends ArrayObject {
     private boolean[] array;
 
-    public BooleanArrayObject(int len, String type) {
-        super(len, type);
+    public BooleanArrayObject(int len, String type, JClass clazz) {
+        super(len, type,clazz);
         array = new boolean[len];
     }
 }

@@ -1,7 +1,6 @@
 package com.njuse.jvmfinal.instructions.references;
 
 import com.njuse.jvmfinal.instructions.base.Index16Instruction;
-import com.njuse.jvmfinal.instructions.base.Index8Instruction;
 import com.njuse.jvmfinal.memory.jclass.JClass;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.RuntimeConstantPool;
 import com.njuse.jvmfinal.memory.jclass.runtimeConstantPool.constant.ref.ClassRef;
