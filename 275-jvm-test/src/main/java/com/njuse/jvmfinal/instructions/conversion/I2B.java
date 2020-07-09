@@ -11,7 +11,7 @@ public class I2B extends NoOperandsInstruction {
      */
     @Override
     public void execute(StackFrame frame) {
-        int b=frame.getOperandStack().popInt()<<24;
-        frame.getOperandStack().pushInt(b>>24);//注意这个是有符号
+        int b=frame.getOperandStack().popInt();
+        frame.getOperandStack().pushInt((byte)(b&0xFF));//注意这个是有符号
     }
 }

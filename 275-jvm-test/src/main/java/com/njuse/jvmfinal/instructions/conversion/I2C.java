@@ -11,7 +11,7 @@ public class I2C extends NoOperandsInstruction {
      */
     @Override
     public void execute(StackFrame frame) {
-        int c=frame.getOperandStack().popInt()<<23;
-        frame.getOperandStack().pushInt((c>>23)&0xFF);//注意这个是无符号
+        int c=frame.getOperandStack().popInt()<<15;
+        frame.getOperandStack().pushInt((c>>15)&0xFFFF);//注意这个是无符号
     }
 }
