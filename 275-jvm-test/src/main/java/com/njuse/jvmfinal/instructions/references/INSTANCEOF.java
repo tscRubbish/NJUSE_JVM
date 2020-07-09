@@ -18,6 +18,7 @@ public class INSTANCEOF extends Index16Instruction {
         RuntimeConstantPool rcp=frame.getMethod().getClazz().getRuntimeConstantPool();
         try{
             JClass clazz=((ClassRef)rcp.getConstant(this.index)).getResolvedClass();
+            //System.out.println(ref.getClazz().getName()+" "+ref.getClazz().isAssignableFrom(clazz));
             if (ref.getClazz().isAssignableFrom(clazz))
                 frame.getOperandStack().pushInt(1);
             else frame.getOperandStack().pushInt(0);
