@@ -23,37 +23,36 @@ public class PUTFIELD extends Index16Instruction {
             JClass target=field.getClazz();
             int SlotId=field.getSlotID();
             JObject jObject;
-            Object value;
             switch (field.getDescriptor().charAt(0)){
                 case 'I':
                 case 'B':
                 case 'C':
                 case 'Z':
                 case 'S':
-                    value=frame.getOperandStack().popInt();
+                    int ivalue=frame.getOperandStack().popInt();
                     jObject=frame.getOperandStack().popObjectRef();
-                    ((NonArrayObject)jObject).getFields().setInt(SlotId,(int)value);
+                    ((NonArrayObject)jObject).getFields().setInt(SlotId,ivalue);
                     break;
                 case 'J':
-                    value=frame.getOperandStack().popLong();
+                    long lvalue=frame.getOperandStack().popLong();
                     jObject=frame.getOperandStack().popObjectRef();
-                    ((NonArrayObject)jObject).getFields().setLong(SlotId,(long) value);
+                    ((NonArrayObject)jObject).getFields().setLong(SlotId,lvalue);
                     break;
                 case 'D':
-                    value=frame.getOperandStack().popDouble();
+                    double dvalue=frame.getOperandStack().popDouble();
                     jObject=frame.getOperandStack().popObjectRef();
-                    ((NonArrayObject)jObject).getFields().setDouble(SlotId,(double)value);
+                    ((NonArrayObject)jObject).getFields().setDouble(SlotId,dvalue);
                     break;
                 case 'F':
-                    value=frame.getOperandStack().popFloat();
+                    float fvalue=frame.getOperandStack().popFloat();
                     jObject=frame.getOperandStack().popObjectRef();
-                    ((NonArrayObject)jObject).getFields().setFloat(SlotId,(float) value);
+                    ((NonArrayObject)jObject).getFields().setFloat(SlotId,fvalue);
                     break;
                 case '[':
                 case 'L':
-                    value=frame.getOperandStack().popObjectRef();
+                    JObject rvalue=frame.getOperandStack().popObjectRef();
                     jObject=frame.getOperandStack().popObjectRef();
-                    ((NonArrayObject)jObject).getFields().setObjectRef(SlotId,(JObject) value);
+                    ((NonArrayObject)jObject).getFields().setObjectRef(SlotId,rvalue);
                     break;
             }
         }catch (ClassNotFoundException e){e.printStackTrace();}

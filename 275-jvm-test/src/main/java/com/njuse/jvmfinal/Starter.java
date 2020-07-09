@@ -15,11 +15,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Starter {
-    static String cp = "src/test/java/";
+    static String cp = "src/test/java";
 
     public static void main(String[] args) {
-        Starter.runTest("cases.light.Test10", cp);
+        //Starter.runTest("cases.light.Test10", cp);
         //Starter.runTest("cases.medium.DarkMediumInstruction2", cp);
+        Starter.runTest("cases.light.Test11",cp);
     }
 
     /**

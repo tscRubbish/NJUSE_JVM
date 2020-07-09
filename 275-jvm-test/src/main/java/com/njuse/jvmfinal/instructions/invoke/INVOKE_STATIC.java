@@ -58,10 +58,7 @@ public class INVOKE_STATIC extends Index16Instruction {
             if (toInvoke.getName().equals("registerNatives")) {
                 frame.getThread().popFrame();
             } else {
-                System.out.println("Native method:"
-                        + toInvoke.getClazz().getName()
-                        + toInvoke.name
-                        + toInvoke.descriptor);
+                //System.out.println("Native method:" + toInvoke.getClazz().getName() + toInvoke.name + toInvoke.descriptor);
                 frame.getThread().popFrame();
             }
         }

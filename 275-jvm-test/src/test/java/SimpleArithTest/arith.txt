@@ -1,0 +1,274 @@
+Classfile /C:/Users/669/Desktop/637d4be4f2a5440089c0c51610363867/275-jvm-test/src/test/SimpleArithTest/ArithTest.class
+  Last modified Jul 7, 2020; size 1083 bytes
+  MD5 checksum 0a5f31f2b333e12f275509700d35cd02
+  Compiled from "ArithTest.java"
+public class ArithTest
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #9.#31         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #5.#32         // ArithTest.a:I
+   #3 = Fieldref           #5.#33         // ArithTest.b:I
+   #4 = Methodref          #34.#35        // TestUtil.equalInt:(II)Z
+   #5 = Class              #36            // ArithTest
+   #6 = Methodref          #5.#31         // ArithTest."<init>":()V
+   #7 = Methodref          #5.#37         // ArithTest.testInvokeAdd:(II)I
+   #8 = Methodref          #34.#38        // TestUtil.reach:(I)V
+   #9 = Class              #39            // java/lang/Object
+  #10 = Utf8               a
+  #11 = Utf8               I
+  #12 = Utf8               b
+  #13 = Utf8               <init>
+  #14 = Utf8               ()V
+  #15 = Utf8               Code
+  #16 = Utf8               LineNumberTable
+  #17 = Utf8               testAdd
+  #18 = Utf8               testSub
+  #19 = Utf8               testMul
+  #20 = Utf8               testDiv
+  #21 = Utf8               testAnd
+  #22 = Utf8               testOr
+  #23 = Utf8               testXor
+  #24 = Utf8               testInc
+  #25 = Utf8               testInvokeAdd
+  #26 = Utf8               (II)I
+  #27 = Utf8               main
+  #28 = Utf8               ([Ljava/lang/String;)V
+  #29 = Utf8               SourceFile
+  #30 = Utf8               ArithTest.java
+  #31 = NameAndType        #13:#14        // "<init>":()V
+  #32 = NameAndType        #10:#11        // a:I
+  #33 = NameAndType        #12:#11        // b:I
+  #34 = Class              #40            // TestUtil
+  #35 = NameAndType        #41:#42        // equalInt:(II)Z
+  #36 = Utf8               ArithTest
+  #37 = NameAndType        #25:#26        // testInvokeAdd:(II)I
+  #38 = NameAndType        #43:#44        // reach:(I)V
+  #39 = Utf8               java/lang/Object
+  #40 = Utf8               TestUtil
+  #41 = Utf8               equalInt
+  #42 = Utf8               (II)Z
+  #43 = Utf8               reach
+  #44 = Utf8               (I)V
+{
+  public ArithTest();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_3
+         6: putfield      #2                  // Field a:I
+         9: aload_0
+        10: iconst_4
+        11: putfield      #3                  // Field b:I
+        14: return
+      LineNumberTable:
+        line 1: 0
+        line 2: 4
+        line 3: 9
+
+  public void testAdd();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: aload_0
+         5: getfield      #3                  // Field b:I
+         8: iadd
+         9: istore_1
+        10: iconst_3
+        11: iload_1
+        12: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        15: pop
+        16: return
+      LineNumberTable:
+        line 6: 0
+        line 7: 10
+        line 8: 16
+
+  public void testSub();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: aload_0
+         5: getfield      #3                  // Field b:I
+         8: isub
+         9: istore_1
+        10: iconst_3
+        11: iload_1
+        12: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        15: pop
+        16: return
+      LineNumberTable:
+        line 11: 0
+        line 12: 10
+        line 13: 16
+
+  public void testMul();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: aload_0
+         5: getfield      #3                  // Field b:I
+         8: imul
+         9: istore_1
+        10: iconst_3
+        11: iload_1
+        12: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        15: pop
+        16: return
+      LineNumberTable:
+        line 16: 0
+        line 17: 10
+        line 18: 16
+
+  public void testDiv();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #3                  // Field b:I
+         4: iconst_2
+         5: idiv
+         6: istore_1
+         7: iconst_3
+         8: iload_1
+         9: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        12: pop
+        13: return
+      LineNumberTable:
+        line 21: 0
+        line 22: 7
+        line 23: 13
+
+  public void testAnd();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: iconst_2
+         5: iand
+         6: istore_1
+         7: iconst_3
+         8: iload_1
+         9: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        12: pop
+        13: return
+      LineNumberTable:
+        line 26: 0
+        line 27: 7
+        line 28: 13
+
+  public void testOr();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: iconst_2
+         5: ior
+         6: istore_1
+         7: iconst_4
+         8: iload_1
+         9: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        12: pop
+        13: return
+      LineNumberTable:
+        line 31: 0
+        line 32: 7
+        line 33: 13
+
+  public void testXor();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field a:I
+         4: iconst_2
+         5: ixor
+         6: istore_1
+         7: iconst_4
+         8: iload_1
+         9: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        12: pop
+        13: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 7
+        line 38: 13
+
+  public void testInc();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: dup
+         2: getfield      #2                  // Field a:I
+         5: iconst_1
+         6: iadd
+         7: putfield      #2                  // Field a:I
+        10: iconst_2
+        11: aload_0
+        12: getfield      #2                  // Field a:I
+        15: invokestatic  #4                  // Method TestUtil.equalInt:(II)Z
+        18: pop
+        19: return
+      LineNumberTable:
+        line 41: 0
+        line 42: 10
+        line 43: 19
+
+  public int testInvokeAdd(int, int);
+    descriptor: (II)I
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: iload_1
+         1: iload_2
+         2: iadd
+         3: ireturn
+      LineNumberTable:
+        line 46: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=3, args_size=1
+         0: new           #5                  // class ArithTest
+         3: dup
+         4: invokespecial #6                  // Method "<init>":()V
+         7: astore_1
+         8: aload_1
+         9: iconst_1
+        10: iconst_2
+        11: invokevirtual #7                  // Method testInvokeAdd:(II)I
+        14: istore_2
+        15: iload_2
+        16: invokestatic  #8                  // Method TestUtil.reach:(I)V
+        19: return
+      LineNumberTable:
+        line 50: 0
+        line 51: 8
+        line 52: 15
+        line 53: 19
+}
+SourceFile: "ArithTest.java"
