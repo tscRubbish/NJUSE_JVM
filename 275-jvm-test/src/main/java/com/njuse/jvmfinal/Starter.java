@@ -11,6 +11,7 @@ import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
 
 import java.io.File;
+import java.io.PrintWriter;
 
 public class Starter {
     static String cp = "src/test/java/";
@@ -41,8 +42,11 @@ public class Starter {
                     jThread.pushFrame(stackFrame);
                 }
             }*/
-
-            Interpreter.interpret(jThread);
+            try{
+                PrintWriter pw=new PrintWriter(new File("src/test/java/test.txt"));
+                Interpreter.interpret(jThread,pw);
+                pw.close();
+            }catch (Exception e){}
         } catch (ClassNotFoundException cfe) {
             cfe.printStackTrace();
         }

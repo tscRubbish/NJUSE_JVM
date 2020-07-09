@@ -6,13 +6,17 @@ import com.njuse.jvmfinal.runtime.JThread;
 import com.njuse.jvmfinal.runtime.StackFrame;
 import com.njuse.jvmfinal.runtime.struct.Slot;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class Interpreter {
     private static ByteBuffer codeReader;
+    private static PrintWriter pw;
 
-    public static void interpret(JThread thread) {
+    public static void interpret(JThread thread,PrintWriter p) {
+        pw=p;
         initCodeReader(thread);
         loop(thread);
         return;
@@ -48,6 +52,9 @@ public class Interpreter {
             int nextPC = codeReader.position();
             oriTop.setNextPC(nextPC);
             instruction.execute(oriTop);
+            try{
+                pw.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
+            }catch (Exception e){}
  //          System.out.println(oriTop.getMethod().getName()+" "+instruction.toString()+" "+codeReader.position());
 //            System.out.println(thread.getTopFrame().getMethod().getName()+" "+thread.getTopFrame().getOperandStack().getTop());
             //check whether there's a new frame

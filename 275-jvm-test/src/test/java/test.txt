@@ -1,0 +1,605 @@
+<clinit> INVOKE_STATIC index: 17 3
+<clinit> RETURN 4
+main ICONST_N3 1
+main ICONST_N3 2
+main ICONST_N3 3
+main com.njuse.jvmfinal.instructions.references.MULTIANEWARRAY@dd8dc3 7
+main ASTORE_1 8
+main ICONST_N0 9
+main ISTORE_2 10
+main ILOAD_2 11
+main ICONST_N3 12
+main IF_ICMPGE offset: 51 15
+main ICONST_N0 16
+main ISTORE_3 17
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main IINC index : 2num : 1 60
+main GOTO offset: -50 63
+main ILOAD_2 11
+main ICONST_N3 12
+main IF_ICMPGE offset: 51 15
+main ICONST_N0 16
+main ISTORE_3 17
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main IINC index : 2num : 1 60
+main GOTO offset: -50 63
+main ILOAD_2 11
+main ICONST_N3 12
+main IF_ICMPGE offset: 51 15
+main ICONST_N0 16
+main ISTORE_3 17
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main ICONST_N0 23
+main ISTORE index: 4 25
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main ALOAD_1 32
+main ILOAD_2 33
+main AALOAD 34
+main ILOAD_3 35
+main AALOAD 36
+main ILOAD index: 4 38
+main ILOAD_2 39
+main ILOAD_3 40
+main IADD 41
+main ILOAD index: 4 43
+main IADD 44
+main IASTORE 45
+main IINC index : 4num : 1 48
+main GOTO offset: -23 51
+main ILOAD index: 4 27
+main ICONST_N3 28
+main IF_ICMPGE offset: 23 31
+main IINC index : 3num : 1 54
+main GOTO offset: -37 57
+main ILOAD_3 18
+main ICONST_N3 19
+main IF_ICMPGE offset: 38 22
+main IINC index : 2num : 1 60
+main GOTO offset: -50 63
+main ILOAD_2 11
+main ICONST_N3 12
+main IF_ICMPGE offset: 51 15
+main ALOAD_1 64
+main INSTANCEOF index: 3 67
+main IFEQ offset: 13 70
+main ALOAD_1 71
+main ICONST_N0 72
+main AALOAD 73
+main ICONST_N1 74
+main AALOAD 75
+main ICONST_N2 76
+main IALOAD 77
+main INVOKE_STATIC index: 4 80
+main INVOKE_STATIC index: 4 80
+reach RETURN 1
+main RETURN 81
