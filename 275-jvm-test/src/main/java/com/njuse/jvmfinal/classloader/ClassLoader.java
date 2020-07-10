@@ -152,7 +152,7 @@ public class ClassLoader {
      * link phase
      */
     private void linkClass(JClass clazz) {
-        //verify(clazz);
+        verify(clazz);
         prepare(clazz);
     }
 
