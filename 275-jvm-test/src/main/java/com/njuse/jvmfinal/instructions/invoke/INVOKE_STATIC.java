@@ -94,7 +94,7 @@ public class INVOKE_STATIC extends Index16Instruction {
                 //System.out.println(currentClz.getName());
                 //System.out.println(toInvoke.getName());
                 //System.out.println(frame.getMethod().getName());
-                System.out.print(v);
+                System.out.println(v);
                 frame.getOperandStack().pushInt(v);
             }
         }

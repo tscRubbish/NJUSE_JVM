@@ -7,12 +7,14 @@ public class Test7 {
     int x;
     static {
         a=new int[2][2][2];
+        a[0][0][0]=1;
     }
     int func(Test7[][][] t,int i,int j,int k){
         return t[i][j][k].x+i+j+k;
     }
     public static void main(String[] args) {
         Test7[][][] a2=new Test7[2][2][2];
+        TestUtil.reach(a[0][0][0]);
         for (int i=0;i<2;i++){
             for (int j=0;j<2;j++){
                 for (int k=0;k<2;k++){
