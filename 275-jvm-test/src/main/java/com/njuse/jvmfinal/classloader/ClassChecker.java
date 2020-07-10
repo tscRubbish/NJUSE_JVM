@@ -36,17 +36,17 @@ public class ClassChecker {
         if (!clazz.isAbstract()&&!clazz.getSuperClassName().equals("")){
             JClass jClass=clazz.getSuperClass();
             if (jClass.getName().equals("")) return;
-            ArrayList<Method> methods=new ArrayList<Method>();
-            for (Method m:clazz.getMethods()) methods.add(m);
+            ArrayList<String> methods=new ArrayList<String>();
+            for (Method m:clazz.getMethods()) methods.add(m.getName());
             for (Method m:jClass.getMethods()){
-                if (m.isAbstract()&&!methods.contains(m)) throw new RuntimeException("Don't achieve abstract method");
-                if (m.isFinal()&&methods.contains(m)) throw new RuntimeException("achieve final method");
+                if (m.isAbstract()&&!methods.contains(m.getName())) throw new RuntimeException("Don't achieve abstract method");
+                if (m.isFinal()&&methods.contains(m.getName())) throw new RuntimeException("achieve final method");
             }
             //System.out.println(clazz.getName()+" "+clazz.getInterfaces().length);
             if (clazz.getInterfaceNames().length==0) return;
             for (JClass intface:clazz.getInterfaces()){
                 for (Method m:intface.getMethods()){
-                    if (!m.isFinal()&&!methods.contains(m)) throw new RuntimeException("Don't achieve interface method");
+                    if (!m.isFinal()&&!methods.contains(m.getName())) throw new RuntimeException("Don't achieve interface method");
                 }
             }
         }

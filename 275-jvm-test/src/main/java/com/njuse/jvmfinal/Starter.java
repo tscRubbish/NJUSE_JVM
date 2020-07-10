@@ -18,7 +18,7 @@ public class Starter {
     static String cp = "src/test/java";
 
     public static void main(String[] args) {
-        Starter.runTest("cases.light.Test14", cp);
+        Starter.runTest("cases.medium.DarkMediumInstruction2", cp);
         //Starter.runTest("cases.medium.DarkMediumInstruction2", cp);
         //Starter.runTest("SimpleArr",cp);
     }
