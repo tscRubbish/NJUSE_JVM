@@ -31,31 +31,41 @@ public class ClassChecker {
         }
     }
     static void checkData(JClass clazz){
-        if (!clazz.getSuperClassName().equals("")&&clazz.getSuperClass()==null) throw new RuntimeException("No SuperClass");
-        if (!clazz.getSuperClassName().equals("")&&clazz.getSuperClass().isFinal()) throw new RuntimeException("SuperClass is Final");
+        //验证除了object类以外的类是否有父类
+        if (!clazz.getSuperClassName().equals("")&&clazz.getSuperClass()==null&&clazz.getName().equals("java/lang/Object"))
+            throw new RuntimeException("No SuperClass");
+        //验证父类是否是final
+        if (!clazz.getSuperClassName().equals("")&&clazz.getSuperClass().isFinal())
+            throw new RuntimeException("SuperClass is Final");
         if (!clazz.isAbstract()&&!clazz.getSuperClassName().equals("")){
             JClass jClass=clazz.getSuperClass();
             if (jClass.getName().equals("")) return;
-            ArrayList<String> methods=new ArrayList<String>();
-            for (Method m:clazz.getMethods()) methods.add(m.getName());
+            ArrayList<Pair<String,String> > methods=new ArrayList<Pair<String,String>>();
+            for (Method m:clazz.getMethods()) methods.add(Pair.of(m.getName(),m.getDescriptor()));
             for (Method m:jClass.getMethods()){
-                if (m.isAbstract()&&!methods.contains(m.getName())) throw new RuntimeException("Don't achieve abstract method");
-                if (m.isFinal()&&methods.contains(m.getName())) throw new RuntimeException("achieve final method");
+                //如果不是抽象类，是否实现了父类的所有抽象方法
+                if (m.isAbstract()&&!methods.contains(Pair.of(m.getName(),m.getDescriptor()))) throw new RuntimeException("Don't achieve abstract method");
+                //是否覆盖了父类的final方法
+                if (m.isFinal()&&methods.contains(Pair.of(m.getName(),m.getDescriptor()))) throw new RuntimeException("achieve final method");
             }
             //System.out.println(clazz.getName()+" "+clazz.getInterfaces().length);
             if (clazz.getInterfaceNames().length==0) return;
+            //如果不是抽象类，是否实现了接口的所有方法
             for (JClass intface:clazz.getInterfaces()){
                 for (Method m:intface.getMethods()){
-                    if (!m.isFinal()&&!methods.contains(m.getName())) throw new RuntimeException("Don't achieve interface method");
+                    if (!m.isFinal()&&!methods.contains(Pair.of(m.getName(),m.getDescriptor())))
+                        throw new RuntimeException("Don't achieve interface method");
                 }
             }
         }
     }
     static void checkByte(JClass clazz){
         for (Method m:clazz.getMethods()){
+            //忽略本地方法
             if (m.getName().equals("registerNatives")) continue;
             if (!m.isParsed()) m.parseCode();
             if (m.getInstList()==null) return;
+            //检测方法体中的跳转不会跳转到方法体之外
             for (Pair<Instruction,Integer> instruction:m.getInstList()){
                 //System.out.println(instruction.getKey().toString());
                 if (instruction.getKey() instanceof BranchInstruction){
@@ -67,6 +77,7 @@ public class ClassChecker {
         }
     }
     static void checkReference(JClass clazz) {
+        //验证符号引用中的类的可访问性
         RuntimeConstantPool rcp=clazz.getRuntimeConstantPool();
         for (Constant c:rcp.getConstants()){
             if (c instanceof ClassRef) {

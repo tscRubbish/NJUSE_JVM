@@ -163,7 +163,6 @@ public class JClass {
      * Class Init Methods
      */
 
-    //if in multi-thread, jclass need a initstate lock
     private void initStart(JClass clazz) {
         clazz.initState = InitState.BUSY;
     }
